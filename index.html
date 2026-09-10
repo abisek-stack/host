@@ -1,69 +1,402 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      color: #4682b4;
-    }
-
-    header p {
-      margin-top: 8px;
-      color: #666;
-    }
-
-    .hero-image {
-      max-width: 800px;
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    footer {
-      margin-top: 30px;
-      color: #999;
-      font-size: 0.9rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Dhimal — Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(10px);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 font-sans antialiased selection:bg-sky-500 selection:text-white">
 
-  <header>
-    <h1>Welcome to My Website</h1>
-    <p>This is a placeholder page. Replace the image and text with your own content.</p>
-  </header>
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-tight text-sky-600 dark:text-sky-400 flex items-center gap-2">
+                <i data-lucide="code" class="w-6 h-6"></i>
+                <span>abhishek<span class="text-slate-900 dark:text-white">.com.np</span></span>
+            </a>
 
-  <img src="images/placeholder.png" alt="Placeholder image" class="hero-image">
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600 dark:text-slate-300">
+                <a href="#about" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Contact</a>
+            </nav>
 
-  <footer>
-    &copy; 2026 My Website. All rights reserved.
-  </footer>
+            <div class="flex items-center gap-3">
+                <!-- Dark Mode Toggle Button -->
+                <button id="theme-toggle" aria-label="Toggle Dark Mode" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-all active:scale-95">
+                    <i id="theme-toggle-dark-icon" data-lucide="moon" class="w-5 h-5 hidden"></i>
+                    <i id="theme-toggle-light-icon" data-lucide="sun" class="w-5 h-5 hidden"></i>
+                </button>
 
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 py-4 space-y-3 font-medium">
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
+            <a href="#skills" class="mobile-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Skills</a>
+            <a href="#projects" class="mobile-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Projects</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Contact</a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 space-y-24 sm:space-y-32">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[80vh] flex flex-col justify-center items-start pt-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-200 dark:border-sky-900/50 bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 text-xs sm:text-sm font-medium mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                </span>
+                Available for projects & opportunities
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
+                Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-600">Abhishek Dhimal</span>.
+            </h1>
+            
+            <p class="text-lg sm:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl font-light leading-relaxed mb-8">
+                I design and build interactive, responsive, and high-performance web applications based in Nepal.
+            </p>
+
+            <div class="flex flex-wrap gap-4 w-full sm:w-auto">
+                <a href="#projects" class="w-full sm:w-auto text-center px-6 py-3.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold transition-all shadow-lg shadow-sky-500/20 active:scale-95 flex items-center justify-center gap-2">
+                    <span>View My Work</span>
+                    <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+                </a>
+                <a href="#contact" class="w-full sm:w-auto text-center px-6 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <span>Get In Touch</span>
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Social Links Quick Access -->
+            <div class="flex items-center gap-4 mt-12 text-slate-500 dark:text-slate-400">
+                <a href="https://github.com" target="_blank" aria-label="GitHub Profile" class="p-2 hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
+                    <i data-lucide="github" class="w-6 h-6"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn Profile" class="p-2 hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="mailto:contact@abhishekdhimal.com.np" aria-label="Send Email" class="p-2 hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
+                    <i data-lucide="at-sign" class="w-6 h-6"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="scroll-mt-24">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-8 flex items-center gap-3">
+                <i data-lucide="user" class="text-sky-600 dark:text-sky-400 w-7 h-7"></i>
+                About Me
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                <div class="md:col-span-2 space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed text-base sm:text-lg">
+                    <p>
+                        Welcome! I am a passionate web developer dedicated to building scalable web applications with clean user interfaces and smooth user experiences.
+                    </p>
+                    <p>
+                        My focus revolves around building real-world solutions using modern web tools, clean architecture, and responsive designs that look and work seamlessly across all screens.
+                    </p>
+                </div>
+                
+                <!-- Info Card -->
+                <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm space-y-4">
+                    <h3 class="font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-2">Quick Info</h3>
+                    <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="globe" class="w-4 h-4 text-sky-500"></i>
+                            <span>Domain: <strong>abhishekdhimal.com.np</strong></span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-sky-500"></i>
+                            <span>Location: Nepal</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-sky-500"></i>
+                            <span>Focus: Full-Stack Web Dev</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="scroll-mt-24">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-8 flex items-center gap-3">
+                <i data-lucide="cpu" class="text-sky-600 dark:text-sky-400 w-7 h-7"></i>
+                Tech Stack & Skills
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Frontend -->
+                <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 hover:border-sky-500/50 transition-colors">
+                    <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center mb-4">
+                        <i data-lucide="layout" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Frontend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700/50">HTML5</span>
+                        <span class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700/50">CSS3</span>
+                        <span class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700/50">Tailwind CSS</span>
+                        <span class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700/50">JavaScript (ES6+)</span>
+                        <span class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700/50">Bootstrap</span>
+                    </div>
+                </div>
+
+                <!-- Backend & Databases -->
+                <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 hover:border-sky-500/50 transition-colors">
+                    <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center mb-4">
+                        <i data-lucide="server" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Backend & Database</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700/50">PHP</span>
+                        <span class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700/50">MySQL</span>
+                        <span class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700/50">REST APIs</span>
+                    </div>
+                </div>
+
+                <!-- Tools & Deployment -->
+                <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 hover:border-sky-500/50 transition-colors">
+                    <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center mb-4">
+                        <i data-lucide="wrench" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Tools & Hosting</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700/50">Git & GitHub</span>
+                        <span class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700/50">GitHub Pages</span>
+                        <span class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700/50">VS Code</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="scroll-mt-24">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold flex items-center gap-3">
+                    <i data-lucide="folder-git-2" class="text-sky-600 dark:text-sky-400 w-7 h-7"></i>
+                    Featured Projects
+                </h2>
+
+                <!-- Project Filters -->
+                <div class="flex gap-2 p-1 bg-slate-200/60 dark:bg-slate-800/60 rounded-xl self-start sm:self-auto text-xs font-semibold">
+                    <button class="filter-btn active px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 shadow-sm text-sky-600 dark:text-sky-400 transition-all" data-filter="all">All</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all" data-filter="web">Web Apps</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all" data-filter="ui">UI & Tools</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project Card 1 -->
+                <div class="project-card group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/40 overflow-hidden hover:shadow-xl transition-all duration-300" data-category="web">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-sky-600 dark:text-sky-400">Web Application</span>
+                            <div class="flex items-center gap-2">
+                                <a href="#" target="_blank" aria-label="GitHub Repository" class="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" target="_blank" aria-label="Live Demo" class="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Restaurant Management System</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            A complete online food ordering and management portal featuring real-time order processing, inventory monitoring, and role-based access.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-700/60">PHP</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-700/60">MySQL</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-700/60">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/40 overflow-hidden hover:shadow-xl transition-all duration-300" data-category="ui">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-sky-600 dark:text-sky-400">Interactive Tool</span>
+                            <div class="flex items-center gap-2">
+                                <a href="#" target="_blank" aria-label="GitHub Repository" class="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" target="_blank" aria-label="Live Demo" class="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Interactive Study Tracker</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            A dynamic client-side study tool equipped with spaced repetition tracking, progress visualization, and MCQ practice modules.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-700/60">JavaScript</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-700/60">HTML5</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-700/60">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="scroll-mt-24">
+            <div class="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-sky-500 to-blue-600 text-white shadow-2xl relative overflow-hidden">
+                <div class="max-w-2xl relative z-10 space-y-6">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold">Let's build something together!</h2>
+                    <p class="text-sky-100 text-base sm:text-lg leading-relaxed">
+                        Have a project in mind, need help with web development, or just want to chat? Reach out to me directly!
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <!-- Click to Copy Email -->
+                        <button id="copy-email-btn" class="px-6 py-3.5 rounded-xl bg-white text-slate-900 font-semibold hover:bg-sky-50 transition-all flex items-center justify-center gap-2 active:scale-95">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                            <span id="copy-text">Copy Email Address</span>
+                        </button>
+                        <a href="mailto:contact@abhishekdhimal.com.np" class="px-6 py-3.5 rounded-xl bg-sky-700/50 border border-white/20 hover:bg-sky-700 font-semibold transition-all flex items-center justify-center gap-2 text-white">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            <span>Send Direct Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500 dark:text-slate-400">
+        <p>© <span id="year"></span> Abhishek Dhimal. Hosted on GitHub & mapped to <a href="https://abhishekdhimal.com.np" class="underline hover:text-sky-500">abhishekdhimal.com.np</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Lucide Icons Initialization
+        lucide.createIcons();
+
+        // Dark / Light Mode Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            lightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Project Filtering Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-white', 'dark:bg-slate-700', 'text-sky-600', 'dark:text-sky-400', 'shadow-sm');
+                    b.classList.add('text-slate-600', 'dark:text-slate-400');
+                });
+                
+                btn.classList.add('active', 'bg-white', 'dark:bg-slate-700', 'text-sky-600', 'dark:text-sky-400', 'shadow-sm');
+                btn.classList.remove('text-slate-600', 'dark:text-slate-400');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Copy Email to Clipboard
+        const copyBtn = document.getElementById('copy-email-btn');
+        const copyText = document.getElementById('copy-text');
+
+        copyBtn.addEventListener('click', () => {
+            const email = "contact@abhishekdhimal.com.np";
+            navigator.clipboard.writeText(email).then(() => {
+                copyText.textContent = "Copied to Clipboard!";
+                setTimeout(() => {
+                    copyText.textContent = "Copy Email Address";
+                }, 2500);
+            });
+        });
+
+        // Dynamic Copyright Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
