@@ -1,1 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhishek — Portfolio</title>
+<meta name="description" content="Abhishek's personal portfolio — projects, skills, and contact.">
 
+<!--
+====================================================================
+  QUICK CUSTOMIZATION GUIDE
+====================================================================
+
+  1. PROFILE IMAGE
+     - Add your photo to:  assets/profile.jpg
+     - No code changes needed once the file exists at that path.
+     - Recommended: square-ish photo, at least 600x600px.
+
+  2. SOCIAL LINKS
+     Replace the following placeholders with your real accounts:
+       - YOUR_USERNAME          -> GitHub username
+       - YOUR_USERNAME          -> LinkedIn username
+       - YOUR_USERNAME          -> Instagram username
+       - YOUR_USERNAME          -> Facebook username
+       - YOUR_PHONE_NUMBER      -> WhatsApp number, international
+                                    format, digits only, NO '+',
+                                    spaces, or dashes
+                                    (e.g. 9779800000000)
+       - YOUR_EMAIL@example.com -> your email address
+
+     All social links live in ONE place — search for:
+       SOCIAL LINKS — EDIT THESE
+     in this file and edit the values there. Every link on the
+     page (hero, contact section, footer) reads from that block.
+
+  3. TEXT CONTENT
+     Search for "PLACEHOLDER" comments throughout the HTML body —
+     each one marks text you should personalize (name, headline,
+     about, education, skills, projects, certifications, etc).
+
+  4. COLORS / FONTS
+     Defined as CSS custom properties at the top of the <style>
+     block under :root — change once, applies everywhere.
+
+====================================================================
+-->
+
+<style>
+  :root {
+    /* ---------- Color tokens ---------- */
+    --color-bg: #0C1614;
+    --color-bg-raised: #121E1B;
+    --color-bg-card: #16241F;
+    --color-border: #26362F;
+    --color-text: #EDE7DA;
+    --color-text-dim: #9CAA9F;
+    --color-text-faint: #6C7C72;
+    --color-accent: #E3A33D;
+    --color-accent-soft: rgba(227, 163, 61, 0.14);
+    --color-accent-dim: #B9812A;
+
+    /* ---------- Type ---------- */
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* ---------- Layout ---------- */
+    --max-width: 1120px;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --transition: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  a { color: inherit; text-decoration: none; }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  p { margin: 0; }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .section {
+    padding: 110px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .section-head {
+    max-width: 620px;
+    margin-bottom: 56px;
+  }
+
+  .section-head .kicker {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  }
+
+  .section-head .sub {
+    margin-top: 14px;
+    color: var(--color-text-dim);
+    font-size: 1.05rem;
+    max-width: 56ch;
+  }
+
+  /* ---------- Skip link ---------- */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    background: var(--color-accent);
+    color: #10190f;
+    padding: 12px 18px;
+    border-radius: var(--radius-sm);
+    z-index: 200;
+    font-weight: 600;
+  }
+  .skip-link:focus {
+    left: 20px;
+    top: 20px;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(12, 22, 20, 0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-text);
+  }
+  .logo span { color: var(--color-accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 34px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+    color: var(--color-text-dim);
+    transition: color var(--transition);
+    padding: 6px 2px;
+    border-bottom: 1px solid transparent;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus-visible { color: var(--color-text); border-bottom-color: var(--color-accent); }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    width: 42px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .nav-toggle svg { width: 20px; height: 20px; }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: var(--color-accent);
+    color: #10190f;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: background var(--transition), transform var(--transition);
+  }
+  .nav-cta:hover, .nav-cta:focus-visible { background: #f0b458; transform: translateY(-1px); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 96px 0 100px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 .accent-line {
+    display: block;
+    color: var(--color-text-dim);
+    font-size: 0.42em;
+    font-family: var(--font-body);
+    font-weight: 500;
+    margin-top: 16px;
+    letter-spacing: 0;
+  }
+
+  .hero-about {
+    margin-top: 26px;
+    color: var(--color-text-dim);
+    font-size: 1.08rem;
+    max-width: 52ch;
+  }
+
+  .hero-meta {
+    margin-top: 22px;
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    color: var(--color-text-faint);
+    font-size: 0.92rem;
+  }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .hero-meta svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+  .hero-actions {
+    margin-top: 38px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 26px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.96rem;
+    transition: background var(--transition), transform var(--transition), border-color var(--transition);
+    border: 1px solid transparent;
+  }
+
+  .btn-primary { background: var(--color-accent); color: #10190f; }
+  .btn-primary:hover, .btn-primary:focus-visible { background: #f0b458; transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+  .btn-secondary:hover, .btn-secondary:focus-visible { border-color: var(--color-accent); color: var(--color-accent); transform: translateY(-2px); }
+
+  .hero-socials {
+    margin-top: 30px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    color: var(--color-text-dim);
+    transition: border-color var(--transition), color var(--transition), transform var(--transition);
+  }
+  .icon-btn svg { width: 17px; height: 17px; }
+  .icon-btn:hover, .icon-btn:focus-visible {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  /* ---------- Profile image ---------- */
+  .profile-frame {
+    position: relative;
+    justify-self: center;
+    width: min(100%, 340px);
+  }
+
+  .profile-glow {
+    position: absolute;
+    inset: -18px;
+    background: radial-gradient(circle at 50% 40%, rgba(227,163,61,0.28), transparent 70%);
+    filter: blur(6px);
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  .profile-image-wrap {
+    position: relative;
+    z-index: 1;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(227, 163, 61, 0.4);
+    padding: 8px;
+    background: linear-gradient(160deg, rgba(227,163,61,0.12), rgba(255,255,255,0.02));
+  }
+
+  .profile-image-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: calc(var(--radius-lg) - 8px);
+    overflow: hidden;
+    background: var(--color-bg-card);
+  }
+
+  /* Placeholder graphic shown via CSS; the <img> sits on top and
+     naturally covers it once assets/profile.jpg exists. If the
+     image fails to load, onerror hides it so the placeholder
+     underneath remains visible and the layout stays intact. */
+  .profile-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--color-text-faint);
+    background:
+      radial-gradient(circle at 50% 35%, rgba(227,163,61,0.10), transparent 60%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 14px);
+  }
+
+  .profile-placeholder svg { width: 64px; height: 64px; color: var(--color-text-faint); opacity: 0.7; }
+
+  .profile-placeholder span {
+    font-size: 0.8rem;
+    text-align: center;
+    max-width: 70%;
+    color: var(--color-text-faint);
+  }
+
+  .profile-image-inner img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* ---------- About ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 60px;
+  }
+
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    padding: 6px;
+    background: var(--color-bg-card);
+  }
+
+  .about-photo .profile-image-inner { border-radius: calc(var(--radius-md) - 6px); }
+
+  .about-text p { color: var(--color-text-dim); font-size: 1.03rem; margin-bottom: 18px; }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-facts {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .fact { border-left: 2px solid var(--color-accent); padding-left: 14px; }
+  .fact .label { font-size: 0.8rem; color: var(--color-text-faint); text-transform: none; margin-bottom: 3px; }
+  .fact .value { font-size: 0.98rem; color: var(--color-text); }
+
+  /* ---------- Skills ---------- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+  }
+
+  .skill-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 26px;
+  }
+
+  .skill-card h3 { font-size: 1.05rem; margin-bottom: 14px; font-family: var(--font-body); font-weight: 600; }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .skill-tag {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    border: 1px solid rgba(227,163,61,0.25);
+  }
+
+  /* ---------- Projects ---------- */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 26px;
+  }
+
+  .project-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+
+  .project-card:hover { border-color: var(--color-accent-dim); transform: translateY(-3px); }
+
+  .project-card h3 { font-size: 1.2rem; font-family: var(--font-body); font-weight: 600; }
+  .project-card p { color: var(--color-text-dim); font-size: 0.96rem; }
+
+  .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
+  .project-tags span {
+    font-size: 0.78rem;
+    color: var(--color-text-faint);
+    border: 1px solid var(--color-border);
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  .project-link {
+    margin-top: auto;
+    padding-top: 8px;
+    color: var(--color-accent);
+    font-size: 0.92rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ---------- Certifications / Interests ---------- */
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .list-block ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .list-block li {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-dim);
+    font-size: 0.96rem;
+  }
+  .list-block li:last-child { border-bottom: none; padding-bottom: 0; }
+  .list-block li strong { color: var(--color-text); font-weight: 600; }
+  .list-block li .meta { color: var(--color-text-faint); font-size: 0.85rem; white-space: nowrap; }
+
+  .interest-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+  .interest-pills span {
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-dim);
+    font-size: 0.9rem;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .contact-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+  .contact-card:hover, .contact-card:focus-within { border-color: var(--color-accent-dim); transform: translateY(-2px); }
+
+  .contact-card .icon-btn { flex-shrink: 0; pointer-events: none; }
+
+  .contact-card .ctext { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .contact-card .ctext .label { font-size: 0.82rem; color: var(--color-text-faint); }
+  .contact-card .ctext .value {
+    font-size: 1rem;
+    color: var(--color-text);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    padding: 50px 0 40px;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-brand { display: flex; flex-direction: column; gap: 6px; }
+  .footer-brand .logo { font-size: 1.1rem; }
+  .footer-brand p { color: var(--color-text-faint); font-size: 0.85rem; }
+
+  .footer-socials { display: flex; gap: 12px; }
+  .footer-socials .icon-btn { width: 34px; height: 34px; }
+  .footer-socials .icon-btn svg { width: 15px; height: 15px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .profile-frame { order: -1; width: min(100%, 240px); }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-photo { max-width: 280px; }
+    .split-grid { grid-template-columns: 1fr; }
+    .section { padding: 76px 0; }
+  }
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: inline-flex; }
+    .nav.open .nav-links {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--color-bg-raised);
+      padding: 20px 28px;
+      gap: 18px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .about-facts { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ================= SOCIAL LINKS — EDIT THESE ================= -->
+<!--
+  This is the single source of truth for every social / contact
+  link on the page. Update the values below and every icon, card,
+  and footer link across the site will use the new URL.
+
+  GitHub    : replace YOUR_USERNAME
+  LinkedIn  : replace YOUR_USERNAME
+  Instagram : replace YOUR_USERNAME
+  Facebook  : replace YOUR_USERNAME
+  WhatsApp  : replace YOUR_PHONE_NUMBER with full international
+              number, digits only — no '+', spaces, or dashes
+              e.g. 9779800000000
+  Email     : replace YOUR_EMAIL@example.com
+-->
+<script>
+  window.SOCIAL_LINKS = {
+    github:    "https://github.com/YOUR_USERNAME",
+    linkedin:  "https://www.linkedin.com/in/YOUR_USERNAME",
+    instagram: "https://www.instagram.com/YOUR_USERNAME",
+    facebook:  "https://www.facebook.com/YOUR_USERNAME",
+    whatsapp:  "https://wa.me/YOUR_PHONE_NUMBER",
+    email:     "mailto:YOUR_EMAIL@example.com"
+  };
+</script>
+<!-- ================= END SOCIAL LINKS ================= -->
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#top" class="logo">A<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="siteNav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <div class="container hero-inner">
+      <div>
+        <p class="hero-eyebrow"><!-- PLACEHOLDER: professional headline --> Software Developer &amp; Problem Solver</p>
+        <h1>
+          <!-- PLACEHOLDER: full name -->
+          Abhishek
+          <span class="accent-line"><!-- PLACEHOLDER: one-line tagline -->Building thoughtful software, one project at a time.</span>
+        </h1>
+        <p class="hero-about">
+          <!-- PLACEHOLDER: short intro / about me summary -->
+          I'm Abhishek, a developer who enjoys turning ideas into clean,
+          working products. This is a short placeholder introduction —
+          replace it with a few sentences about who you are, what you
+          work on, and what you're looking for next.
+        </p>
+        <div class="hero-meta">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <!-- PLACEHOLDER: location --> Biratnagar, Nepal
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>
+            Available for opportunities
+          </span>
+        </div>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View my projects</a>
+          <a href="#contact" class="btn btn-secondary">Contact me</a>
+        </div>
+        <div class="hero-socials" aria-label="Social media links">
+          <a class="icon-btn" id="hero-github" href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.82 1.19 3.08 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/></svg>
+          </a>
+          <a class="icon-btn" id="hero-linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM.5 8.98h4V23.5h-4V8.98zM8.5 8.98h3.83v1.98h.05c.53-1 1.85-2.06 3.8-2.06 4.06 0 4.82 2.67 4.82 6.14v8.46h-4v-7.5c0-1.79-.03-4.1-2.5-4.1-2.5 0-2.88 1.95-2.88 3.97v7.63h-4V8.98z"/></svg>
+          </a>
+          <a class="icon-btn" id="hero-instagram" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a class="icon-btn" id="hero-whatsapp" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.92L2 22l5.32-1.39a9.86 9.86 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.9C21.95 6.45 17.5 2 12.04 2zm0 18.12h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.18 8.18 0 0 1-1.25-4.34c0-4.53 3.69-8.22 8.24-8.22 2.2 0 4.27.86 5.82 2.42a8.15 8.15 0 0 1 2.41 5.81c0 4.53-3.69 8.2-8.24 8.2zm4.51-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.42-.14 0-.31-.02-.48-.02s-.44.06-.67.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.58.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ================= PROFILE IMAGE ================= -->
+      <!-- Replace assets/profile.jpg with your professional profile photo -->
+      <div class="profile-frame">
+        <div class="profile-glow" aria-hidden="true"></div>
+        <div class="profile-image-wrap">
+          <div class="profile-image-inner">
+            <div class="profile-placeholder" id="hero-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8.5" r="3.6"/><path d="M4.5 20c1.3-3.6 4.2-5.5 7.5-5.5s6.2 1.9 7.5 5.5"/></svg>
+              <span>Add assets/profile.jpg to show your photo here</span>
+            </div>
+            <img
+              src="assets/profile.jpg"
+              alt="Portrait of Abhishek"
+              loading="eager"
+              onerror="this.style.display='none'"
+              onload="document.getElementById('hero-placeholder').style.display='none'">
+          </div>
+        </div>
+      </div>
+      <!-- ================= END PROFILE IMAGE ================= -->
+
+    </div>
+  </header>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">About</span>
+        <h2>A little about me</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo">
+          <div class="profile-image-inner">
+            <div class="profile-placeholder" id="about-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8.5" r="3.6"/><path d="M4.5 20c1.3-3.6 4.2-5.5 7.5-5.5s6.2 1.9 7.5 5.5"/></svg>
+              <span>Photo placeholder</span>
+            </div>
+            <img
+              src="assets/profile.jpg"
+              alt="Abhishek at work"
+              loading="lazy"
+              onerror="this.style.display='none'"
+              onload="document.getElementById('about-placeholder').style.display='none'">
+          </div>
+        </div>
+        <div class="about-text">
+          <!-- PLACEHOLDER: about me, 2-3 paragraphs -->
+          <p>
+            This is placeholder about-me copy. Replace it with a genuine
+            introduction — where you're from, what got you into your
+            field, and what kind of work energizes you.
+          </p>
+          <p>
+            Add a second paragraph about your current focus: the kind of
+            problems you like solving, the tools you reach for, or the
+            team/environment you thrive in.
+          </p>
+          <div class="about-facts">
+            <div class="fact">
+              <div class="label">Location</div>
+              <!-- PLACEHOLDER: location -->
+              <div class="value">Biratnagar, Nepal</div>
+            </div>
+            <div class="fact">
+              <div class="label">Email</div>
+              <!-- PLACEHOLDER: email -->
+              <div class="value">YOUR_EMAIL@example.com</div>
+            </div>
+            <div class="fact">
+              <div class="label">Education</div>
+              <!-- PLACEHOLDER: education -->
+              <div class="value">B.Sc. in Computer Science, Your University</div>
+            </div>
+            <div class="fact">
+              <div class="label">Career goal</div>
+              <!-- PLACEHOLDER: career goal -->
+              <div class="value">Growing into a full-stack engineering role</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Skills</span>
+        <h2>What I work with</h2>
+        <p class="sub">A placeholder skill set — swap these in for the languages, frameworks, and tools you actually use.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Languages</h3>
+          <!-- PLACEHOLDER: languages -->
+          <div class="skill-tags">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Frameworks &amp; Tools</h3>
+          <!-- PLACEHOLDER: frameworks / tools -->
+          <div class="skill-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Other</h3>
+          <!-- PLACEHOLDER: other skills -->
+          <div class="skill-tags">
+            <span class="skill-tag">UI Design</span>
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">Team Collaboration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Projects</span>
+        <h2>Selected work</h2>
+        <p class="sub">Placeholder project entries — replace with real projects, links, and descriptions.</p>
+      </div>
+      <div class="projects-grid">
+        <!-- PLACEHOLDER: project 1 -->
+        <div class="project-card">
+          <h3>Project One</h3>
+          <p>A short one- or two-sentence description of what this project does and the problem it solves.</p>
+          <div class="project-tags"><span>React</span><span>Node.js</span></div>
+          <a class="project-link" href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+        </div>
+        <!-- PLACEHOLDER: project 2 -->
+        <div class="project-card">
+          <h3>Project Two</h3>
+          <p>A short one- or two-sentence description of what this project does and the problem it solves.</p>
+          <div class="project-tags"><span>Python</span><span>Flask</span></div>
+          <a class="project-link" href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+        </div>
+        <!-- PLACEHOLDER: project 3 -->
+        <div class="project-card">
+          <h3>Project Three</h3>
+          <p>A short one- or two-sentence description of what this project does and the problem it solves.</p>
+          <div class="project-tags"><span>SQL</span><span>Data</span></div>
+          <a class="project-link" href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATIONS & INTERESTS ============ -->
+  <section class="section" id="certifications">
+    <div class="container split-grid">
+      <div class="list-block">
+        <div class="section-head" style="margin-bottom:28px;">
+          <span class="kicker">Certifications</span>
+          <h2>Credentials</h2>
+        </div>
+        <!-- PLACEHOLDER: certifications -->
+        <ul>
+          <li><span><strong>Certification Name</strong><br>Issuing Organization</span><span class="meta">2024</span></li>
+          <li><span><strong>Certification Name</strong><br>Issuing Organization</span><span class="meta">2023</span></li>
+        </ul>
+      </div>
+      <div class="list-block">
+        <div class="section-head" style="margin-bottom:28px;">
+          <span class="kicker">Interests</span>
+          <h2>Outside of work</h2>
+        </div>
+        <!-- PLACEHOLDER: interests -->
+        <div class="interest-pills">
+          <span>Open Source</span>
+          <span>Reading</span>
+          <span>Photography</span>
+          <span>Chess</span>
+          <span>Hiking</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact" style="border-bottom:none;">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Contact</span>
+        <h2>Let's talk</h2>
+        <p class="sub">The fastest ways to reach me — everything below is a placeholder until you fill in your real details.</p>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-card" id="contact-email" href="#" >
+          <span class="icon-btn" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+          </span>
+          <span class="ctext">
+            <span class="label">Email</span>
+            <!-- PLACEHOLDER: email -->
+            <span class="value">YOUR_EMAIL@example.com</span>
+          </span>
+        </a>
+        <a class="contact-card" id="contact-whatsapp" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="icon-btn" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.92L2 22l5.32-1.39a9.86 9.86 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.9C21.95 6.45 17.5 2 12.04 2zm0 18.12h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.18 8.18 0 0 1-1.25-4.34c0-4.53 3.69-8.22 8.24-8.22 2.2 0 4.27.86 5.82 2.42a8.15 8.15 0 0 1 2.41 5.81c0 4.53-3.69 8.2-8.24 8.2z"/></svg>
+          </span>
+          <span class="ctext">
+            <span class="label">WhatsApp</span>
+            <!-- PLACEHOLDER: phone number, display format -->
+            <span class="value">+977 XXXXX XXXXX</span>
+          </span>
+        </a>
+        <a class="contact-card" id="contact-github" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="icon-btn" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.82 1.19 3.08 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/></svg>
+          </span>
+          <span class="ctext">
+            <span class="label">GitHub</span>
+            <!-- PLACEHOLDER: github username -->
+            <span class="value">github.com/YOUR_USERNAME</span>
+          </span>
+        </a>
+        <a class="contact-card" id="contact-linkedin" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="icon-btn" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM.5 8.98h4V23.5h-4V8.98zM8.5 8.98h3.83v1.98h.05c.53-1 1.85-2.06 3.8-2.06 4.06 0 4.82 2.67 4.82 6.14v8.46h-4v-7.5c0-1.79-.03-4.1-2.5-4.1-2.5 0-2.88 1.95-2.88 3.97v7.63h-4V8.98z"/></svg>
+          </span>
+          <span class="ctext">
+            <span class="label">LinkedIn</span>
+            <!-- PLACEHOLDER: linkedin username -->
+            <span class="value">linkedin.com/in/YOUR_USERNAME</span>
+          </span>
+        </a>
+        <a class="contact-card" id="contact-instagram" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="icon-btn" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <span class="ctext">
+            <span class="label">Instagram</span>
+            <!-- PLACEHOLDER: instagram username -->
+            <span class="value">@YOUR_USERNAME</span>
+          </span>
+        </a>
+        <a class="contact-card" id="contact-facebook" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="icon-btn" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+          </span>
+          <span class="ctext">
+            <span class="label">Facebook</span>
+            <!-- PLACEHOLDER: facebook username -->
+            <span class="value">@YOUR_USERNAME</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo">ABHISHEK</span>
+      <p>&copy; <span id="year"></span> Abhishek. All rights reserved.</p>
+    </div>
+    <div class="footer-socials" aria-label="Social media links">
+      <a class="icon-btn" id="footer-github" href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.82 1.19 3.08 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/></svg>
+      </a>
+      <a class="icon-btn" id="footer-linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM.5 8.98h4V23.5h-4V8.98zM8.5 8.98h3.83v1.98h.05c.53-1 1.85-2.06 3.8-2.06 4.06 0 4.82 2.67 4.82 6.14v8.46h-4v-7.5c0-1.79-.03-4.1-2.5-4.1-2.5 0-2.88 1.95-2.88 3.97v7.63h-4V8.98z"/></svg>
+      </a>
+      <a class="icon-btn" id="footer-instagram" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="icon-btn" id="footer-facebook" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+      </a>
+      <a class="icon-btn" id="footer-whatsapp" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.92L2 22l5.32-1.39a9.86 9.86 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.9C21.95 6.45 17.5 2 12.04 2zm0 18.12h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.18 8.18 0 0 1-1.25-4.34c0-4.53 3.69-8.22 8.24-8.22 2.2 0 4.27.86 5.82 2.42a8.15 8.15 0 0 1 2.41 5.81c0 4.53-3.69 8.2-8.24 8.2z"/></svg>
+      </a>
+      <a class="icon-btn" id="footer-email" href="#" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Apply the SOCIAL_LINKS config to every link on the page.
+  (function () {
+    var L = window.SOCIAL_LINKS;
+
+    var map = {
+      github:    ["hero-github", "contact-github", "footer-github"],
+      linkedin:  ["hero-linkedin", "contact-linkedin", "footer-linkedin"],
+      instagram: ["hero-instagram", "contact-instagram", "footer-instagram"],
+      facebook:  ["contact-facebook", "footer-facebook"],
+      whatsapp:  ["hero-whatsapp", "contact-whatsapp", "footer-whatsapp"],
+      email:     ["contact-email", "footer-email"]
+    };
+
+    Object.keys(map).forEach(function (key) {
+      map[key].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.setAttribute("href", L[key]);
+      });
+    });
+
+    // Mobile nav toggle
+    var toggle = document.getElementById("navToggle");
+    var nav = document.getElementById("siteNav");
+    if (toggle && nav) {
+      toggle.addEventListener("click", function () {
+        var isOpen = nav.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+      nav.querySelectorAll(".nav-links a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          nav.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
+    // Footer year
+    var y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+  })();
+</script>
+
+</body>
+</html>
