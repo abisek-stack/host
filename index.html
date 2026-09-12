@@ -6,6 +6,17 @@
 <title>Abhishek Dhimal — Portfolio</title>
 <meta name="description" content="Abhishek Dhimal's personal portfolio — projects, skills, and contact.">
 
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abhishekdhimal.com.np">
+<meta property="og:title" content="Abhishek Dhimal — Full-Stack Developer">
+<meta property="og:description" content="BIM student building full-stack web applications — from restaurant management systems to e-commerce platforms with integrated payments and AI tooling.">
+<meta property="og:image" content="https://abhishekdhimal.com.np/assets/pulsemart.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Abhishek Dhimal — Full-Stack Developer">
+<meta name="twitter:description" content="BIM student building full-stack web applications — from restaurant management systems to e-commerce platforms with integrated payments and AI tooling.">
+<meta name="twitter:image" content="https://abhishekdhimal.com.np/assets/pulsemart.jpg">
+<!-- TODO: once you upload assets/profile.jpg, swap og:image/twitter:image above to point at that instead of pulsemart.jpg -->
+
 <style>
   :root {
     /* ---------- Color tokens ---------- */
@@ -487,6 +498,15 @@
   .project-card-body h3 { font-size: 1.2rem; font-family: var(--font-body); font-weight: 600; }
   .project-card-body p { color: var(--color-text-dim); font-size: 0.96rem; }
 
+  .project-demo-wrap {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    aspect-ratio: 16 / 9;
+    background: var(--color-bg-raised);
+  }
+  .project-demo { display: block; width: 100%; height: 100%; object-fit: cover; }
+
   .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
   .project-tags span {
     font-size: 0.78rem;
@@ -702,6 +722,7 @@
         </div>
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary">View my projects</a>
+          <a href="assets/Abhishek_Dhimal_Resume.pdf" class="btn btn-secondary" download>Download résumé</a>
           <a href="#contact" class="btn btn-secondary">Contact me</a>
         </div>
         <div class="hero-socials" aria-label="Social media links">
@@ -854,9 +875,15 @@
           </div>
           <div class="project-card-body">
             <h3>Flavoro Restaurant System</h3>
-            <p>An online food ordering and restaurant management platform featuring role-based access, inventory tracking, and financial monitoring modules.</p>
+            <p>Restaurants running orders through phone calls and paper tickets lose track of stock and money fast. Flavoro replaces that with one system: customers order online, staff manage inventory and role-based access, and owners see real-time financial tracking — all in a clean, mobile-responsive interface.</p>
+            <div class="project-demo-wrap" id="flavoro-demo-wrap">
+              <video class="project-demo" muted loop playsinline autoplay preload="metadata" poster="assets/flavoro.jpg"
+                onerror="document.getElementById('flavoro-demo-wrap').style.display='none'">
+                <source src="assets/flavoro-demo.mp4" type="video/mp4">
+              </video>
+            </div>
             <div class="project-tags"><span>PHP</span><span>MySQL</span><span>Tailwind CSS</span></div>
-            <a class="project-link" id="flavoro-link" href="https://github.com/abisek-stack" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+            <a class="project-link" id="flavoro-link" href="https://github.com/abisek-stack/online_food_ordering_and_restaurant_mangement_system" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
           </div>
         </div>
         <div class="project-card project-card--paid">
@@ -871,9 +898,15 @@
           </div>
           <div class="project-card-body">
             <h3>PulseMart</h3>
-            <p>A full-stack e-commerce platform with secure online and cash-on-delivery checkout, email-OTP account verification, and an AI-powered admin assistant that lets store owners query and manage orders, products, and customers in plain English — with a confirm-before-write flow and full audit log.</p>
+            <p>Most small online stores either pay heavily for a SaaS platform or hand-roll something fragile. PulseMart is a complete, self-hosted alternative: full storefront and checkout, email-OTP verified accounts, and an AI-powered admin assistant that answers plain-English questions about orders and inventory — with a confirm-before-write flow and full audit log, so nothing changes without sign-off.</p>
+            <div class="project-demo-wrap" id="pulsemart-demo-wrap">
+              <video class="project-demo" muted loop playsinline autoplay preload="metadata" poster="assets/pulsemart.jpg"
+                onerror="document.getElementById('pulsemart-demo-wrap').style.display='none'">
+                <source src="assets/pulsemart-demo.mp4" type="video/mp4">
+              </video>
+            </div>
             <div class="project-tags"><span>Next.js</span><span>React</span><span>Node.js</span><span>PostgreSQL</span></div>
-            <p class="project-price">From $249 <span>· one-time, source code + setup help</span></p>
+            <p class="project-price">From $249 <span>· one-time — source code, plus I'll personally help you set it up</span></p>
             <a class="project-link" id="pulsemart-buy-link" href="https://wa.me/9779827064592?text=Hi%20Abhishek%2C%20I%27m%20interested%20in%20PulseMart." target="_blank" rel="noopener noreferrer">View &amp; Buy →</a>
           </div>
         </div>
