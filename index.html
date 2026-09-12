@@ -498,14 +498,31 @@
   .project-card-body h3 { font-size: 1.2rem; font-family: var(--font-body); font-weight: 600; }
   .project-card-body p { color: var(--color-text-dim); font-size: 0.96rem; }
 
-  .project-demo-wrap {
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    aspect-ratio: 16 / 9;
-    background: var(--color-bg-raised);
+  .project-demo-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-top: 2px;
   }
-  .project-demo { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .project-demo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-accent);
+    color: #10190f;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 9px 16px;
+    border-radius: 999px;
+    transition: var(--transition);
+  }
+  .project-demo-btn:hover { background: var(--color-accent-dim); }
+  .project-demo-btn svg { width: 15px; height: 15px; }
+  .project-demo-note {
+    font-size: 0.78rem;
+    color: var(--color-text-faint);
+  }
 
   .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
   .project-tags span {
@@ -876,12 +893,6 @@
           <div class="project-card-body">
             <h3>Flavoro Restaurant System</h3>
             <p>Restaurants running orders through phone calls and paper tickets lose track of stock and money fast. Flavoro replaces that with one system: customers order online, staff manage inventory and role-based access, and owners see real-time financial tracking — all in a clean, mobile-responsive interface.</p>
-            <div class="project-demo-wrap" id="flavoro-demo-wrap">
-              <video class="project-demo" muted loop playsinline autoplay preload="metadata" poster="assets/flavoro.jpg"
-                onerror="document.getElementById('flavoro-demo-wrap').style.display='none'">
-                <source src="assets/flavoro-demo.mp4" type="video/mp4">
-              </video>
-            </div>
             <div class="project-tags"><span>PHP</span><span>MySQL</span><span>Tailwind CSS</span></div>
             <a class="project-link" id="flavoro-link" href="https://github.com/abisek-stack/online_food_ordering_and_restaurant_mangement_system" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
           </div>
@@ -899,14 +910,17 @@
           <div class="project-card-body">
             <h3>PulseMart</h3>
             <p>Most small online stores either pay heavily for a SaaS platform or hand-roll something fragile. PulseMart is a complete, self-hosted alternative: full storefront and checkout, email-OTP verified accounts, and an AI-powered admin assistant that answers plain-English questions about orders and inventory — with a confirm-before-write flow and full audit log, so nothing changes without sign-off.</p>
-            <div class="project-demo-wrap" id="pulsemart-demo-wrap">
-              <video class="project-demo" muted loop playsinline autoplay preload="metadata" poster="assets/pulsemart.jpg"
-                onerror="document.getElementById('pulsemart-demo-wrap').style.display='none'">
-                <source src="assets/pulsemart-demo.mp4" type="video/mp4">
-              </video>
-            </div>
             <div class="project-tags"><span>Next.js</span><span>React</span><span>Node.js</span><span>PostgreSQL</span></div>
             <p class="project-price">From $249 <span>· one-time — source code, plus I'll personally help you set it up</span></p>
+            <div class="project-demo-cta">
+              <!-- TODO: replace with your real deployed demo URL, e.g. https://demo.abhishekdhimal.com.np -->
+              <a class="project-demo-btn" id="pulsemart-demo-link" href="https://demo.abhishekdhimal.com.np" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
+                Try Live Demo
+              </a>
+              <!-- TODO: set up a demo account (see guide below) and update these credentials -->
+              <span class="project-demo-note">Demo login: demo@pulsemart.com / demo1234</span>
+            </div>
             <a class="project-link" id="pulsemart-buy-link" href="https://wa.me/9779827064592?text=Hi%20Abhishek%2C%20I%27m%20interested%20in%20PulseMart." target="_blank" rel="noopener noreferrer">View &amp; Buy →</a>
           </div>
         </div>
