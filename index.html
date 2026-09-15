@@ -406,20 +406,9 @@
   /* ---------- About ---------- */
   .about-grid {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 60px;
+    grid-template-columns: 1fr;
+    max-width: 75ch;
   }
-
-  .about-photo {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-    padding: 6px;
-    background: var(--color-bg-card);
-  }
-
-  .about-photo .profile-image-inner { border-radius: calc(var(--radius-md) - 6px); }
 
   .about-text p { color: var(--color-text-dim); font-size: 1.03rem; margin-bottom: 18px; }
   .about-text p:last-child { margin-bottom: 0; }
@@ -678,7 +667,6 @@
     .hero-inner { grid-template-columns: 1fr; }
     .profile-frame { order: -1; width: min(100%, 240px); }
     .about-grid { grid-template-columns: 1fr; }
-    .about-photo { max-width: 280px; }
     .split-grid { grid-template-columns: 1fr; }
     .section { padding: 76px 0; }
   }
@@ -721,7 +709,7 @@
     instagram: "https://www.instagram.com/imabisek_3/", // TODO: add your Instagram link
     facebook:  "https://www.facebook.com/abishek.dhimal.1447", // TODO: add your Facebook link
     whatsapp:  "https://wa.me/9779827064592",
-    email:     "mailto:abisekdhimal5@gmail.com"
+    email:     "mailto:abisekdhimal5@gmail.com?subject=Job%20Opportunity%20for%20Abhishek&body=Hi%20Abhishek%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20wanted%20to%20reach%20out%20about..."
   };
 </script>
 
@@ -775,7 +763,7 @@
             </svg>
             Hire me
           </a>
-          <a href="mailto:abisekdhimal5@gmail.com" class="btn btn-secondary">
+          <a href="mailto:abisekdhimal5@gmail.com?subject=Job%20Opportunity%20for%20Abhishek&body=Hi%20Abhishek%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20wanted%20to%20reach%20out%20about..." class="btn btn-secondary">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
             Email me
           </a>
@@ -830,20 +818,6 @@
         <h2>A little about me</h2>
       </div>
       <div class="about-grid">
-        <div class="about-photo">
-          <div class="profile-image-inner">
-            <div class="profile-placeholder" id="about-placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8.5" r="3.6"/><path d="M4.5 20c1.3-3.6 4.2-5.5 7.5-5.5s6.2 1.9 7.5 5.5"/></svg>
-              <span>Photo placeholder</span>
-            </div>
-            <img
-              src="assets/profile.jpg"
-              alt="Abhishek Dhimal"
-              loading="lazy"
-              onerror="this.style.display='none'"
-              onload="document.getElementById('about-placeholder').style.display='none'">
-          </div>
-        </div>
         <div class="about-text">
           <p>
             I'm a motivated Bachelor of Information Management (BIM) student with strong hands-on experience in full-stack web development. I'm passionate about building functional business applications and designing clean, modern user interfaces — and I'm currently looking for an internship opportunity to put my skills to work in a professional, fast-paced development environment.
