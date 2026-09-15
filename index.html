@@ -92,7 +92,7 @@
   }
 
   #about.section {
-    padding: 80px 0;
+    padding: 72px 0;
   }
 
   .section-head {
@@ -101,7 +101,7 @@
   }
 
   #about .section-head {
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
   .section-head .kicker {
@@ -413,19 +413,24 @@
 
   /* ---------- About ---------- */
   .about-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    max-width: 85ch;
+    display: block;
   }
 
-  .about-text p { color: var(--color-text-dim); font-size: 1.03rem; margin-bottom: 14px; }
+  .about-text p {
+    color: var(--color-text-dim);
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+    max-width: 72ch;
+  }
   .about-text p:last-child { margin-bottom: 0; }
 
   .about-facts {
-    margin-top: 24px;
+    margin-top: 30px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    padding-top: 26px;
+    border-top: 1px solid var(--color-border);
   }
 
   .fact { border-left: 2px solid var(--color-accent); padding-left: 14px; }
@@ -674,10 +679,10 @@
   @media (max-width: 860px) {
     .hero-inner { grid-template-columns: 1fr; }
     .profile-frame { order: -1; width: min(100%, 240px); }
-    .about-grid { grid-template-columns: 1fr; }
+    .about-facts { grid-template-columns: repeat(2, 1fr); }
     .split-grid { grid-template-columns: 1fr; }
     .section { padding: 76px 0; }
-    #about.section { padding: 60px 0; }
+    #about.section { padding: 56px 0; }
   }
 
   @media (max-width: 720px) {
@@ -834,23 +839,23 @@
           <p>
             My work spans backend engineering in PHP and Node.js, relational database design with MySQL and PostgreSQL, and building responsive, production-ready frontends with Tailwind CSS and Bootstrap — including payment integrations and AI-assisted admin tooling.
           </p>
-          <div class="about-facts">
-            <div class="fact">
-              <div class="label">Location</div>
-              <div class="value">Nepal</div>
-            </div>
-            <div class="fact">
-              <div class="label">Email</div>
-              <div class="value">abisekdhimal5@gmail.com</div>
-            </div>
-            <div class="fact">
-              <div class="label">Education</div>
-              <div class="value">B.I.M., Tribhuvan University (Exp. 2026)</div>
-            </div>
-            <div class="fact">
-              <div class="label">Career goal</div>
-              <div class="value">Internship in full-stack development</div>
-            </div>
+        </div>
+        <div class="about-facts">
+          <div class="fact">
+            <div class="label">Location</div>
+            <div class="value">Nepal</div>
+          </div>
+          <div class="fact">
+            <div class="label">Email</div>
+            <div class="value">abisekdhimal5@gmail.com</div>
+          </div>
+          <div class="fact">
+            <div class="label">Education</div>
+            <div class="value">B.I.M., Tribhuvan University (Exp. 2026)</div>
+          </div>
+          <div class="fact">
+            <div class="label">Career goal</div>
+            <div class="value">Internship in full-stack development</div>
           </div>
         </div>
       </div>
