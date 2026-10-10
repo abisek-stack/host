@@ -3,33 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#131417" id="themeColor">
 <title>Abhishek Dhimal — Portfolio</title>
 <meta name="description" content="Abhishek Dhimal's personal portfolio — projects, skills, and contact.">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://abhishekdhimal.com.np">
 <meta property="og:title" content="Abhishek Dhimal — Full-Stack Developer">
-<meta property="og:description" content="BIM student building full-stack web applications — from restaurant management systems to e-commerce platforms with integrated payments and AI tooling.">
+<meta property="og:description" content="BIM student building full-stack web applications — including a QR-based cafe ordering SaaS, restaurant management systems, and e-commerce platforms with integrated payments and AI tooling.">
 <meta property="og:image" content="https://abhishekdhimal.com.np/assets/pulsemart.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Abhishek Dhimal — Full-Stack Developer">
-<meta name="twitter:description" content="BIM student building full-stack web applications — from restaurant management systems to e-commerce platforms with integrated payments and AI tooling.">
+<meta name="twitter:description" content="BIM student building full-stack web applications — including a QR-based cafe ordering SaaS, restaurant management systems, and e-commerce platforms with integrated payments and AI tooling.">
 <meta name="twitter:image" content="https://abhishekdhimal.com.np/assets/pulsemart.jpg">
 <!-- TODO: once you upload assets/profile.jpg, swap og:image/twitter:image above to point at that instead of pulsemart.jpg -->
 
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem("theme");
+      var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+      document.documentElement.setAttribute("data-theme", theme);
+      var tc = document.getElementById("themeColor");
+      if (tc) tc.setAttribute("content", theme === "light" ? "#FAF5EA" : "#131417");
+    } catch (e) {}
+  })();
+</script>
+
 <style>
   :root {
-    /* ---------- Color tokens ---------- */
-    --color-bg: #0C1614;
-    --color-bg-raised: #121E1B;
-    --color-bg-card: #16241F;
-    --color-border: #26362F;
-    --color-text: #EDE7DA;
-    --color-text-dim: #9CAA9F;
-    --color-text-faint: #6C7C72;
+    /* ---------- Color tokens (dark — neutral) ---------- */
+    --color-bg: #131417;
+    --color-bg-raised: #1A1C20;
+    --color-bg-card: #1F2126;
+    --color-border: #333640;
+    --color-text: #ECECEF;
+    --color-text-dim: #A5A9B2;
+    --color-text-faint: #71757E;
     --color-accent: #E3A33D;
     --color-accent-soft: rgba(227, 163, 61, 0.14);
     --color-accent-dim: #B9812A;
+    --color-nav-bg: rgba(19, 20, 23, 0.86);
+    --color-on-accent: #14110A;
 
     /* ---------- Type ---------- */
     --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
@@ -43,12 +58,28 @@
     --transition: 240ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  [data-theme="light"] {
+    /* ---------- Color tokens (light — creamy) ---------- */
+    --color-bg: #FAF5EA;
+    --color-bg-raised: #FFFBF2;
+    --color-bg-card: #FFFDF8;
+    --color-border: #E6DCC7;
+    --color-text: #2B2925;
+    --color-text-dim: #6E6656;
+    --color-text-faint: #9C937F;
+    --color-accent: #B06E12;
+    --color-accent-soft: rgba(176, 110, 18, 0.12);
+    --color-accent-dim: #8F5A0E;
+    --color-nav-bg: rgba(250, 245, 234, 0.86);
+    --color-on-accent: #FFFBF2;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
   }
 
   *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
   body {
     margin: 0;
@@ -58,6 +89,8 @@
     font-size: 16px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background var(--transition), color var(--transition);
   }
 
   img { max-width: 100%; display: block; }
@@ -89,6 +122,7 @@
   .section {
     padding: 110px 0;
     border-bottom: 1px solid var(--color-border);
+    scroll-margin-top: 84px;
   }
 
   #about.section {
@@ -129,7 +163,7 @@
     left: -9999px;
     top: auto;
     background: var(--color-accent);
-    color: #10190f;
+    color: var(--color-on-accent);
     padding: 12px 18px;
     border-radius: var(--radius-sm);
     z-index: 200;
@@ -145,7 +179,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(12, 22, 20, 0.86);
+    background: var(--color-nav-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-border);
   }
@@ -200,13 +234,34 @@
   }
   .nav-toggle svg { width: 20px; height: 20px; }
 
+  .nav-actions { display: flex; align-items: center; gap: 12px; }
+
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 38px;
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: border-color var(--transition), color var(--transition);
+  }
+  .theme-toggle:hover, .theme-toggle:focus-visible { border-color: var(--color-accent); color: var(--color-accent); }
+  .theme-toggle svg { width: 19px; height: 19px; }
+  .theme-toggle .icon-moon { display: none; }
+  [data-theme="light"] .theme-toggle .icon-sun { display: none; }
+  [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
   .nav-cta {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 9px 18px;
     background: var(--color-accent);
-    color: #10190f;
+    color: var(--color-on-accent);
     border-radius: var(--radius-sm);
     font-weight: 600;
     font-size: 0.92rem;
@@ -218,6 +273,7 @@
   .hero {
     padding: 96px 0 100px;
     border-bottom: 1px solid var(--color-border);
+    scroll-margin-top: 84px;
   }
 
   .hero-inner {
@@ -287,7 +343,7 @@
     border: 1px solid transparent;
   }
 
-  .btn-primary { background: var(--color-accent); color: #10190f; }
+  .btn-primary { background: var(--color-accent); color: var(--color-on-accent); }
   .btn-primary:hover, .btn-primary:focus-visible { background: #f0b458; transform: translateY(-2px); }
 
   @keyframes floatBtn {
@@ -297,7 +353,7 @@
 
   .btn-hire-prominent {
     background: linear-gradient(180deg, #f0b458, var(--color-accent));
-    color: #10190f;
+    color: var(--color-on-accent);
     padding: 20px 40px;
     font-size: 1.5rem;
     font-weight: 700;
@@ -442,7 +498,7 @@
   /* ---------- Skills ---------- */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
     gap: 20px;
   }
 
@@ -469,7 +525,7 @@
   /* ---------- Projects ---------- */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: 26px;
   }
 
@@ -537,7 +593,7 @@
     align-items: center;
     gap: 8px;
     background: var(--color-accent);
-    color: #10190f;
+    color: var(--color-on-accent);
     font-weight: 700;
     font-size: 0.9rem;
     padding: 9px 16px;
@@ -571,13 +627,18 @@
     gap: 6px;
   }
 
+  .project-link--locked {
+    color: var(--color-text-faint);
+    cursor: default;
+  }
+
   .project-card-title { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
   .project-badge {
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.04em;
-    color: #10190f;
+    color: var(--color-on-accent);
     background: var(--color-accent);
     padding: 3px 9px;
     border-radius: 999px;
@@ -633,7 +694,7 @@
   /* ---------- Contact ---------- */
   .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
     gap: 16px;
   }
 
@@ -679,7 +740,8 @@
 
   /* ---------- Responsive ---------- */
   @media (max-width: 860px) {
-    .hero-inner { grid-template-columns: 1fr; }
+    .hero { padding: 72px 0 76px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 36px; }
     .profile-frame { order: -1; width: min(100%, 240px); }
     .about-facts { grid-template-columns: repeat(2, 1fr); }
     .split-grid { grid-template-columns: 1fr; }
@@ -688,6 +750,8 @@
   }
 
   @media (max-width: 720px) {
+    .container { padding: 0 20px; }
+    .nav-inner { padding: 14px 20px; }
     .nav-links { display: none; }
     .nav-toggle { display: inline-flex; }
     .nav.open .nav-links {
@@ -698,19 +762,33 @@
       right: 0;
       flex-direction: column;
       background: var(--color-bg-raised);
-      padding: 20px 28px;
+      padding: 20px;
       gap: 18px;
+      max-height: calc(100vh - 70px);
+      overflow-y: auto;
       border-bottom: 1px solid var(--color-border);
     }
-    .about-facts { grid-template-columns: 1fr; }
+    .about-text p { text-align: left; }
+    .about-facts { grid-template-columns: 1fr; gap: 18px; }
+    .project-card-body { padding: 22px 20px 24px; }
+    .skill-card { padding: 22px 20px; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
   }
 
   @media (max-width: 480px) {
+    .hero { padding: 56px 0 60px; }
+    .hero h1 { font-size: clamp(2rem, 8vw, 2.6rem); }
+    .hero-actions { gap: 10px; }
     .hero-actions .btn {
       width: 100%;
       justify-content: center;
     }
+    .btn-hire-prominent { font-size: 1.25rem; padding: 16px 28px; }
+    .nav-cta { display: none; }
+    .theme-toggle, .nav-toggle { width: 44px; height: 44px; }
+    .section { padding: 60px 0; }
+    #about.section { padding: 48px 0; }
+    .profile-frame { width: min(100%, 210px); }
   }
 </style>
 </head>
@@ -740,10 +818,16 @@
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Get in touch</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="siteNav">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="siteNav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -759,7 +843,7 @@
           <span class="accent-line">Building functional business applications &amp; modern web systems.</span>
         </h1>
         <p class="hero-about">
-          I'm Abhishek, a Bachelor of Information Management (BIM) student in Nepal with hands-on experience building full-stack web applications — from restaurant management platforms to e-commerce systems with integrated payments and AI tooling.
+          I'm Abhishek, a Bachelor of Information Management (BIM) student in Nepal with hands-on experience building full-stack web applications — including a QR-based cafe ordering SaaS, restaurant management platforms, and e-commerce systems with integrated payments and AI tooling.
         </p>
         <div class="hero-meta">
           <span>
@@ -811,7 +895,6 @@
           <div class="profile-image-inner">
             <div class="profile-placeholder" id="hero-placeholder">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8.5" r="3.6"/><path d="M4.5 20c1.3-3.6 4.2-5.5 7.5-5.5s6.2 1.9 7.5 5.5"/></svg>
-              <span>Add assets/profile.jpg to show your photo here</span>
             </div>
             <img
               src="assets/profile.jpg"
@@ -914,20 +997,28 @@
         <p class="sub">A sample of software projects, full-stack systems, and web utilities I have built.</p>
       </div>
       <div class="projects-grid">
-        <div class="project-card">
+        <div class="project-card project-card--paid">
           <div class="project-media">
-            <div class="project-media-placeholder" id="flavoro-media-placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v6M12 2v6M16 2v6M6 8h12l-1 13a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8z"/></svg>
+            <div class="project-media-placeholder" id="cafesaas-media-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h14v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9z"/><path d="M17 9h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M7 3v3M11 3v3M15 3v3"/></svg>
             </div>
-            <img src="assets/flavoro.jpg" alt="Flavoro restaurant ordering interface" loading="lazy"
+            <!-- TODO: add assets/cafe-saas.jpg (a screenshot of the ordering page or owner dashboard) -->
+            <img src="assets/cafe-saas.jpg" alt="Cafe SaaS QR ordering and owner dashboard" loading="lazy"
               onerror="this.style.display='none'"
-              onload="document.getElementById('flavoro-media-placeholder').style.display='none'">
+              onload="document.getElementById('cafesaas-media-placeholder').style.display='none'">
+            <span class="project-badge project-badge--media">PAID</span>
           </div>
           <div class="project-card-body">
-            <h3>Flavoro Restaurant System</h3>
-            <p>Restaurants running orders through phone calls and paper tickets lose track of stock and money fast. Flavoro replaces that with one system: customers order online, staff manage inventory and role-based access, and owners see real-time financial tracking — all in a clean, mobile-responsive interface.</p>
-            <div class="project-tags"><span>PHP</span><span>MySQL</span><span>Tailwind CSS</span></div>
-            <a class="project-link" id="flavoro-link" href="https://github.com/abisek-stack/online_food_ordering_and_restaurant_mangement_system" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+            <h3>Cafe SaaS — QR Table Ordering</h3>
+            <p>Restaurants running orders through phone calls and paper tickets lose track of tables and revenue fast. Cafe SaaS replaces that with a self-serve platform: customers scan a QR code at their table, browse the menu, and order — while the owner watches orders come in live, manages the menu and tables, and gets a daily revenue summary. Any restaurant can sign up and go live in minutes.</p>
+            <div class="project-tags"><span>Next.js</span><span>Supabase</span><span>PostgreSQL</span><span>Tailwind CSS</span></div>
+            <p class="project-price">NPR 100/table/month <span>· hosted subscription</span></p>
+            <div class="project-demo-cta">
+              <a class="project-demo-btn" id="cafesaas-demo-link" href="https://cafe-saas-nine.vercel.app" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
+                Try Live Demo
+              </a>
+            </div>
           </div>
         </div>
         <div class="project-card project-card--paid">
@@ -959,26 +1050,22 @@
         </div>
         <div class="project-card project-card--paid">
           <div class="project-media">
-            <div class="project-media-placeholder" id="cafesaas-media-placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h14v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9z"/><path d="M17 9h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M7 3v3M11 3v3M15 3v3"/></svg>
+            <div class="project-media-placeholder" id="flavoro-media-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v6M12 2v6M16 2v6M6 8h12l-1 13a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8z"/></svg>
             </div>
-            <!-- TODO: add assets/cafe-saas.jpg (a screenshot of the ordering page or owner dashboard) -->
-            <img src="assets/cafe-saas.jpg" alt="Cafe SaaS QR ordering and owner dashboard" loading="lazy"
+            <img src="assets/flavoro.jpg" alt="Flavoro restaurant ordering interface" loading="lazy"
               onerror="this.style.display='none'"
-              onload="document.getElementById('cafesaas-media-placeholder').style.display='none'">
-            <span class="project-badge project-badge--media">PAID</span>
+              onload="document.getElementById('flavoro-media-placeholder').style.display='none'">
+            <span class="project-badge project-badge--media">LOCKED</span>
           </div>
           <div class="project-card-body">
-            <h3>Cafe SaaS — QR Table Ordering</h3>
-            <p>Restaurants running orders through phone calls and paper tickets lose track of tables and revenue fast. Cafe SaaS replaces that with a self-serve platform: customers scan a QR code at their table, browse the menu, and order — while the owner watches orders come in live, manages the menu and tables, and gets a daily revenue summary. Any restaurant can sign up and go live in minutes.</p>
-            <div class="project-tags"><span>Next.js</span><span>Supabase</span><span>PostgreSQL</span><span>Tailwind CSS</span></div>
-            <p class="project-price">NPR 500/month <span>· hosted subscription</span></p>
-            <div class="project-demo-cta">
-              <a class="project-demo-btn" id="cafesaas-demo-link" href="https://cafe-saas-nine.vercel.app" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
-                Try Live Demo
-              </a>
-            </div>
+            <h3>Flavoro Restaurant System</h3>
+            <p>Restaurants running orders through phone calls and paper tickets lose track of stock and money fast. Flavoro replaces that with one system: customers order online, staff manage inventory and role-based access, and owners see real-time financial tracking — all in a clean, mobile-responsive interface.</p>
+            <div class="project-tags"><span>PHP</span><span>MySQL</span><span>Tailwind CSS</span></div>
+            <span class="project-link project-link--locked">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+              Locked — private, not open source
+            </span>
           </div>
         </div>
       </div>
@@ -1133,6 +1220,24 @@
 
     var y = document.getElementById("year");
     if (y) y.textContent = new Date().getFullYear();
+
+    var themeToggle = document.getElementById("themeToggle");
+    if (themeToggle) {
+      var themeColor = document.getElementById("themeColor");
+      var current = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+      var syncToggle = function (theme) {
+        themeToggle.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
+        themeToggle.setAttribute("aria-label", theme === "light" ? "Switch to dark mode" : "Switch to light mode");
+        if (themeColor) themeColor.setAttribute("content", theme === "light" ? "#FAF5EA" : "#131417");
+      };
+      syncToggle(current);
+      themeToggle.addEventListener("click", function () {
+        current = current === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", current);
+        try { localStorage.setItem("theme", current); } catch (e) {}
+        syncToggle(current);
+      });
+    }
   })();
 </script>
 
