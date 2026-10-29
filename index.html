@@ -1,1061 +1,478 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#131417" id="themeColor">
-<title>Abhishek Dhimal — Portfolio</title>
-<meta name="description" content="Abhishek Dhimal's personal portfolio — projects, skills, and contact.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abhishek Dhimal — Full-Stack Developer, Nepal</title>
+<meta name="description" content="Abhishek Dhimal is a full-stack developer and BIM student in Nepal who designs and ships business software — including OrderKhaja, a live QR table-ordering SaaS for cafés.">
+<meta name="author" content="Abhishek Dhimal">
+<link rel="canonical" href="https://abhishekdhimal.com.np/">
+
+<meta name="theme-color" content="#F3EFE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12110E" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abhishekdhimal.com.np">
+<meta property="og:site_name" content="Abhishek Dhimal">
+<meta property="og:url" content="https://abhishekdhimal.com.np/">
 <meta property="og:title" content="Abhishek Dhimal — Full-Stack Developer">
-<meta property="og:description" content="BIM student building full-stack web applications — including a QR-based cafe ordering SaaS, restaurant management systems, and e-commerce platforms with integrated payments and AI tooling.">
-<meta property="og:image" content="https://abhishekdhimal.com.np/assets/pulsemart.jpg">
+<meta property="og:description" content="Software for the counter, the kitchen and the checkout. Full-stack developer in Nepal, building business applications end to end.">
+<meta property="og:image" content="https://abhishekdhimal.com.np/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Abhishek Dhimal — Software for the counter, the kitchen and the checkout.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Abhishek Dhimal — Full-Stack Developer">
-<meta name="twitter:description" content="BIM student building full-stack web applications — including a QR-based cafe ordering SaaS, restaurant management systems, and e-commerce platforms with integrated payments and AI tooling.">
-<meta name="twitter:image" content="https://abhishekdhimal.com.np/assets/pulsemart.jpg">
+<meta name="twitter:description" content="Software for the counter, the kitchen and the checkout. Full-stack developer in Nepal, building business applications end to end.">
+<meta name="twitter:image" content="https://abhishekdhimal.com.np/assets/og.png">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
 
 <script>
+  // Apply the saved or system theme before first paint to avoid a flash.
   (function () {
+    var root = document.documentElement;
+    root.classList.add("js");
     try {
       var saved = localStorage.getItem("theme");
-      var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
-      document.documentElement.setAttribute("data-theme", theme);
-      var tc = document.getElementById("themeColor");
-      if (tc) tc.setAttribute("content", theme === "light" ? "#FAF5EA" : "#131417");
+      if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
     } catch (e) {}
   })();
 </script>
-
-<style>
-  :root {
-    /* ---------- Color tokens (dark — neutral) ---------- */
-    --color-bg: #131417;
-    --color-bg-raised: #1A1C20;
-    --color-bg-card: #1F2126;
-    --color-border: #333640;
-    --color-text: #ECECEF;
-    --color-text-dim: #A5A9B2;
-    --color-text-faint: #71757E;
-    --color-accent: #E3A33D;
-    --color-accent-soft: rgba(227, 163, 61, 0.14);
-    --color-accent-dim: #B9812A;
-    --color-nav-bg: rgba(19, 20, 23, 0.86);
-    --color-on-accent: #14110A;
-
-    /* ---------- Type ---------- */
-    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
-    /* ---------- Layout ---------- */
-    --max-width: 1120px;
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --transition: 240ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  [data-theme="light"] {
-    /* ---------- Color tokens (light — creamy) ---------- */
-    --color-bg: #FAF5EA;
-    --color-bg-raised: #FFFBF2;
-    --color-bg-card: #FFFDF8;
-    --color-border: #E6DCC7;
-    --color-text: #2B2925;
-    --color-text-dim: #6E6656;
-    --color-text-faint: #9C937F;
-    --color-accent: #B06E12;
-    --color-accent-soft: rgba(176, 110, 18, 0.12);
-    --color-accent-dim: #8F5A0E;
-    --color-nav-bg: rgba(250, 245, 234, 0.86);
-    --color-on-accent: #FFFBF2;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-  }
-
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; overflow-x: hidden; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-
-  body {
-    margin: 0;
-    background: var(--color-bg);
-    color: var(--color-text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    transition: background var(--transition), color var(--transition);
-  }
-
-  img { max-width: 100%; display: block; }
-
-  a { color: inherit; text-decoration: none; }
-
-  :focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-
-  h1, h2, h3, h4 {
-    font-family: var(--font-display);
-    font-weight: 600;
-    line-height: 1.15;
-    margin: 0;
-    color: var(--color-text);
-  }
-
-  p { margin: 0; }
-
-  .container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-
-  .section {
-    padding: 110px 0;
-    border-bottom: 1px solid var(--color-border);
-    scroll-margin-top: 84px;
-  }
-
-  #about.section {
-    padding: 72px 0;
-  }
-
-  .section-head {
-    max-width: 620px;
-    margin-bottom: 56px;
-  }
-
-  #about .section-head {
-    margin-bottom: 28px;
-  }
-
-  .section-head .kicker {
-    color: var(--color-accent);
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    display: block;
-  }
-
-  .section-head h2 {
-    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
-  }
-
-  .section-head .sub {
-    margin-top: 14px;
-    color: var(--color-text-dim);
-    font-size: 1.05rem;
-    max-width: 56ch;
-  }
-
-  /* ---------- Skip link ---------- */
-  .skip-link {
-    position: absolute;
-    left: -9999px;
-    top: auto;
-    background: var(--color-accent);
-    color: var(--color-on-accent);
-    padding: 12px 18px;
-    border-radius: var(--radius-sm);
-    z-index: 200;
-    font-weight: 600;
-  }
-  .skip-link:focus {
-    left: 20px;
-    top: 20px;
-  }
-
-  /* ---------- Nav ---------- */
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--color-nav-bg);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .nav-inner {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 18px 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .logo {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--color-text);
-  }
-  .logo span { color: var(--color-accent); }
-
-  .nav-links {
-    display: flex;
-    gap: 34px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .nav-links a {
-    font-size: 0.95rem;
-    color: var(--color-text-dim);
-    transition: color var(--transition);
-    padding: 6px 2px;
-    border-bottom: 1px solid transparent;
-  }
-  .nav-links a:hover,
-  .nav-links a:focus-visible { color: var(--color-text); border-bottom-color: var(--color-accent); }
-
-  .nav-toggle {
-    display: none;
-    background: none;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    color: var(--color-text);
-    width: 42px;
-    height: 38px;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-  .nav-toggle svg { width: 20px; height: 20px; }
-
-  .nav-actions { display: flex; align-items: center; gap: 12px; }
-
-  .theme-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 38px;
-    background: none;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    color: var(--color-text);
-    cursor: pointer;
-    transition: border-color var(--transition), color var(--transition);
-  }
-  .theme-toggle:hover, .theme-toggle:focus-visible { border-color: var(--color-accent); color: var(--color-accent); }
-  .theme-toggle svg { width: 19px; height: 19px; }
-  .theme-toggle .icon-moon { display: none; }
-  [data-theme="light"] .theme-toggle .icon-sun { display: none; }
-  [data-theme="light"] .theme-toggle .icon-moon { display: block; }
-
-  .nav-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 18px;
-    background: var(--color-accent);
-    color: var(--color-on-accent);
-    border-radius: var(--radius-sm);
-    font-weight: 600;
-    font-size: 0.92rem;
-    transition: background var(--transition), transform var(--transition);
-  }
-  .nav-cta:hover, .nav-cta:focus-visible { background: #f0b458; transform: translateY(-1px); }
-
-  /* ---------- Hero ---------- */
-  .hero {
-    padding: 96px 0 100px;
-    border-bottom: 1px solid var(--color-border);
-    scroll-margin-top: 84px;
-  }
-
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-  }
-
-  .hero-eyebrow {
-    color: var(--color-accent);
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 18px;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
-    letter-spacing: -0.01em;
-  }
-
-  .hero h1 .accent-line {
-    display: block;
-    color: var(--color-text-dim);
-    font-size: 0.42em;
-    font-family: var(--font-body);
-    font-weight: 500;
-    margin-top: 16px;
-    letter-spacing: 0;
-  }
-
-  .hero-about {
-    margin-top: 26px;
-    color: var(--color-text-dim);
-    font-size: 1.08rem;
-    max-width: 52ch;
-  }
-
-  .hero-meta {
-    margin-top: 22px;
-    display: flex;
-    gap: 22px;
-    flex-wrap: wrap;
-    color: var(--color-text-faint);
-    font-size: 0.92rem;
-  }
-  .hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
-  .hero-meta svg { width: 15px; height: 15px; flex-shrink: 0; }
-
-  .hero-actions {
-    margin-top: 38px;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 13px 26px;
-    border-radius: var(--radius-sm);
-    font-weight: 600;
-    font-size: 0.96rem;
-    transition: background var(--transition), transform var(--transition), border-color var(--transition);
-    border: 1px solid transparent;
-  }
-
-  .btn-primary { background: var(--color-accent); color: var(--color-on-accent); }
-  .btn-primary:hover, .btn-primary:focus-visible { background: #f0b458; transform: translateY(-2px); }
-
-  @keyframes floatBtn {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-  }
-
-  .btn-hire-prominent {
-    background: linear-gradient(180deg, #f0b458, var(--color-accent));
-    color: var(--color-on-accent);
-    padding: 20px 40px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    border-radius: var(--radius-md);
-    box-shadow: 0 8px 20px rgba(227,163,61,0.45), 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.25);
-    animation: floatBtn 2.5s ease-in-out infinite;
-  }
-  .btn-hire-prominent:hover, .btn-hire-prominent:focus-visible {
-    background: linear-gradient(180deg, #f5c06b, #f0b458);
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 12px 28px rgba(227,163,61,0.6), 0 4px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
-    animation-play-state: paused;
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--color-text);
-    border-color: var(--color-border);
-  }
-  .btn-secondary:hover, .btn-secondary:focus-visible { border-color: var(--color-accent); color: var(--color-accent); transform: translateY(-2px); }
-
-  .hero-socials {
-    margin-top: 30px;
-    display: flex;
-    gap: 14px;
-    align-items: center;
-  }
-
-  .icon-btn {
-    width: 38px;
-    height: 38px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--color-border);
-    border-radius: 50%;
-    color: var(--color-text-dim);
-    transition: border-color var(--transition), color var(--transition), transform var(--transition);
-  }
-  .icon-btn svg { width: 17px; height: 17px; }
-  .icon-btn:hover, .icon-btn:focus-visible {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-    transform: translateY(-2px);
-  }
-
-  /* ---------- About ---------- */
-  .about-grid {
-    display: block;
-  }
-
-  .about-text p {
-    color: var(--color-text-dim);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 14px;
-    text-align: justify;
-    text-justify: inter-word;
-  }
-  .about-text p:last-child { margin-bottom: 0; }
-
-  .about-facts {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
-    padding-top: 26px;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .fact { border-left: 2px solid var(--color-accent); padding-left: 14px; }
-  .fact .label { font-size: 0.8rem; color: var(--color-text-faint); text-transform: none; margin-bottom: 3px; }
-  .fact .value { font-size: 0.98rem; color: var(--color-text); }
-
-  /* ---------- Skills ---------- */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
-    gap: 20px;
-  }
-
-  .skill-card {
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 26px;
-  }
-
-  .skill-card h3 { font-size: 1.05rem; margin-bottom: 14px; font-family: var(--font-body); font-weight: 600; }
-
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-
-  .skill-tag {
-    font-size: 0.85rem;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: var(--color-accent-soft);
-    color: var(--color-accent);
-    border: 1px solid rgba(227,163,61,0.25);
-  }
-
-  /* ---------- Projects ---------- */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-    gap: 26px;
-  }
-
-  .project-card {
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: border-color var(--transition), transform var(--transition);
-  }
-
-  .project-card:hover { border-color: var(--color-accent-dim); transform: translateY(-3px); }
-
-  .project-media {
-    position: relative;
-    aspect-ratio: 16 / 10;
-    background: var(--color-bg-raised);
-    border-bottom: 1px solid var(--color-border);
-    overflow: hidden;
-  }
-
-  .project-media img {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
-  }
-
-  .project-media-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-      radial-gradient(circle at 30% 20%, rgba(227,163,61,0.16), transparent 55%),
-      repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 16px);
-  }
-  .project-media-placeholder svg { width: 46px; height: 46px; color: var(--color-text-faint); opacity: 0.55; }
-
-  .project-card-body {
-    padding: 26px 28px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    flex: 1;
-  }
-
-  .project-card-body h3 { font-size: 1.2rem; font-family: var(--font-body); font-weight: 600; }
-  .project-card-body p { color: var(--color-text-dim); font-size: 0.96rem; }
-
-  .project-demo-cta {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    margin-top: 2px;
-  }
-  .project-demo-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--color-accent);
-    color: var(--color-on-accent);
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 9px 16px;
-    border-radius: 999px;
-    transition: var(--transition);
-  }
-  .project-demo-btn:hover { background: var(--color-accent-dim); }
-  .project-demo-btn svg { width: 15px; height: 15px; }
-  .project-demo-note {
-    font-size: 0.78rem;
-    color: var(--color-text-faint);
-  }
-
-  .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
-  .project-tags span {
-    font-size: 0.78rem;
-    color: var(--color-text-faint);
-    border: 1px solid var(--color-border);
-    padding: 4px 10px;
-    border-radius: 999px;
-  }
-
-  .project-link {
-    margin-top: auto;
-    padding-top: 8px;
-    color: var(--color-accent);
-    font-size: 0.92rem;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .project-link--locked {
-    color: var(--color-text-faint);
-    cursor: default;
-  }
-
-  .project-card-title { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-
-  .project-badge {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--color-on-accent);
-    background: var(--color-accent);
-    padding: 3px 9px;
-    border-radius: 999px;
-  }
-
-  .project-badge--media {
-    position: absolute;
-    z-index: 2;
-    top: 14px;
-    right: 14px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.35);
-  }
-
-  .project-card--paid { border-color: rgba(227,163,61,0.3); }
-
-  .project-price {
-    color: var(--color-accent);
-    font-size: 0.95rem;
-    font-weight: 600;
-  }
-  .project-price span { color: var(--color-text-faint); font-weight: 400; font-size: 0.85rem; }
-
-  /* ---------- Certifications / Interests ---------- */
-  .split-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-  }
-
-  .list-block ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
-  .list-block li {
-    display: flex;
-    justify-content: space-between;
-    gap: 14px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--color-border);
-    color: var(--color-text-dim);
-    font-size: 0.96rem;
-  }
-  .list-block li:last-child { border-bottom: none; padding-bottom: 0; }
-  .list-block li strong { color: var(--color-text); font-weight: 600; }
-  .list-block li .meta { color: var(--color-text-faint); font-size: 0.85rem; white-space: nowrap; }
-
-  .interest-pills { display: flex; flex-wrap: wrap; gap: 10px; }
-  .interest-pills span {
-    padding: 8px 16px;
-    border-radius: 999px;
-    border: 1px solid var(--color-border);
-    color: var(--color-text-dim);
-    font-size: 0.9rem;
-  }
-
-  /* ---------- Contact ---------- */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
-    gap: 16px;
-  }
-
-  .contact-card {
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 26px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    text-align: center;
-    transition: border-color var(--transition), transform var(--transition), background var(--transition);
-  }
-  .contact-card:hover, .contact-card:focus-visible { border-color: var(--color-accent-dim); transform: translateY(-3px); background: var(--color-bg-raised); }
-
-  .contact-card .icon-btn { width: 46px; height: 46px; pointer-events: none; }
-  .contact-card .icon-btn svg { width: 20px; height: 20px; }
-
-  .contact-card .label { font-size: 0.92rem; color: var(--color-text); font-weight: 600; }
-
-  /* ---------- Footer ---------- */
-  .footer {
-    padding: 50px 0 40px;
-  }
-
-  .footer-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .footer-brand { display: flex; flex-direction: column; gap: 6px; }
-  .footer-brand .logo { font-size: 1.1rem; }
-  .footer-brand p { color: var(--color-text-faint); font-size: 0.85rem; }
-
-  .footer-socials { display: flex; gap: 12px; }
-  .footer-socials .icon-btn { width: 34px; height: 34px; }
-  .footer-socials .icon-btn svg { width: 15px; height: 15px; }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 860px) {
-    .hero { padding: 72px 0 76px; }
-    .about-facts { grid-template-columns: repeat(2, 1fr); }
-    .split-grid { grid-template-columns: 1fr; }
-    .section { padding: 76px 0; }
-    #about.section { padding: 56px 0; }
-  }
-
-  @media (max-width: 720px) {
-    .container { padding: 0 20px; }
-    .nav-inner { padding: 14px 20px; }
-    .nav-links { display: none; }
-    .nav-toggle { display: inline-flex; }
-    .nav.open .nav-links {
-      display: flex;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      flex-direction: column;
-      background: var(--color-bg-raised);
-      padding: 20px;
-      gap: 18px;
-      max-height: calc(100vh - 70px);
-      overflow-y: auto;
-      border-bottom: 1px solid var(--color-border);
-    }
-    .about-text p { text-align: left; }
-    .about-facts { grid-template-columns: 1fr; gap: 18px; }
-    .project-card-body { padding: 22px 20px 24px; }
-    .skill-card { padding: 22px 20px; }
-    .footer-inner { flex-direction: column; align-items: flex-start; }
-  }
-
-  @media (max-width: 480px) {
-    .hero { padding: 56px 0 60px; }
-    .hero h1 { font-size: clamp(2rem, 8vw, 2.6rem); }
-    .hero-actions { gap: 10px; }
-    .hero-actions .btn {
-      width: 100%;
-      justify-content: center;
-    }
-    .btn-hire-prominent { font-size: 1.25rem; padding: 16px 28px; }
-    .nav-cta { display: none; }
-    .theme-toggle, .nav-toggle { width: 44px; height: 44px; }
-    .section { padding: 60px 0; }
-    #about.section { padding: 48px 0; }
-  }
-</style>
+<script src="assets/js/site.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Abhishek Dhimal",
+  "url": "https://abhishekdhimal.com.np/",
+  "jobTitle": "Full-Stack Developer",
+  "email": "mailto:abisekdhimal5@gmail.com",
+  "address": { "@type": "PostalAddress", "addressCountry": "NP" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Tribhuvan University" },
+  "sameAs": [
+    "https://github.com/abisek-stack",
+    "https://www.linkedin.com/in/abhishek-dhimal-465858387/"
+  ]
+}
+</script>
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<script>
-  window.SOCIAL_LINKS = {
-    github:    "https://github.com/abisek-stack",
-    linkedin:  "https://www.linkedin.com/in/abhishek-dhimal-465858387/",
-    instagram: "https://www.instagram.com/imabisek_3/", // TODO: add your Instagram link
-    facebook:  "https://www.facebook.com/abishek.dhimal.1447", // TODO: add your Facebook link
-    whatsapp:  "https://wa.me/9779827064592",
-    email:     "mailto:abisekdhimal5@gmail.com?subject=Job%20Opportunity%20for%20Abhishek&body=Hi%20Abhishek%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20wanted%20to%20reach%20out%20about..."
-  };
-</script>
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a href="#top" class="brand" aria-label="Abhishek Dhimal — back to top">
+      <span class="brand-mark" aria-hidden="true">AD</span>
+      <span class="brand-name">Abhishek Dhimal</span>
+    </a>
 
-<!-- ============ NAV ============ -->
-<nav class="nav" id="siteNav">
-  <div class="nav-inner">
-    <a href="#top" class="logo">A<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#toolkit">Toolkit</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button theme-toggle" id="themeToggle" type="button" aria-label="Switch colour theme">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z"/></svg>
       </button>
-      <a href="#contact" class="nav-cta">Get in touch</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="siteNav">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <a href="#contact" class="button button--small header-cta">Let’s talk</a>
+      <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="menu-button-label">Menu</span>
+        <span class="menu-button-lines" aria-hidden="true"><span></span><span></span></span>
       </button>
     </div>
   </div>
-</nav>
+</header>
+
+<!-- Mobile menu sheet -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+  <div class="mobile-menu-inner wrap">
+    <nav aria-label="Mobile">
+      <ol class="mobile-links">
+        <li><a href="#work"><span class="mono">01</span>Work</a></li>
+        <li><a href="#approach"><span class="mono">02</span>Approach</a></li>
+        <li><a href="#toolkit"><span class="mono">03</span>Toolkit</a></li>
+        <li><a href="#contact"><span class="mono">04</span>Contact</a></li>
+      </ol>
+    </nav>
+    <div class="mobile-menu-foot">
+      <a class="button" href="mailto:abisekdhimal5@gmail.com">Email me</a>
+      <a class="button button--ghost" href="assets/Abhishek_Dhimal_Resume.pdf" download>Résumé (PDF)</a>
+    </div>
+  </div>
+</div>
 
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <header class="hero" id="top">
-    <div class="container hero-inner">
-      <div>
-        <p class="hero-eyebrow">Full-Stack Developer &middot; Problem Solver &middot; Quick Learner</p>
-        <h1>
-          Abhishek Dhimal
-          <span class="accent-line">Building functional business applications &amp; modern web systems.</span>
-        </h1>
-        <p class="hero-about">
-          I'm Abhishek, a Bachelor of Information Management (BIM) student in Nepal with hands-on experience building full-stack web applications — including a QR-based cafe ordering SaaS, restaurant management platforms, and e-commerce systems with integrated payments and AI tooling.
-        </p>
-        <div class="hero-meta">
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-            Nepal
-          </span>
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>
-            Available for opportunities
-          </span>
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-top">
+        <p class="mono hero-name">Abhishek Dhimal <span class="sep" aria-hidden="true">/</span> <span class="nowrap">Full-stack developer</span></p>
+        <p class="mono availability"><span class="pulse" aria-hidden="true"></span>Open to full-stack internships</p>
+      </div>
+
+      <h1 class="hero-title" id="hero-title">
+        <span class="line">Software for<span class="br-narrow"> the</span></span>
+        <span class="line"><span class="br-wide">the </span><em>counter</em>, the <em>kitchen</em></span>
+        <span class="line">&amp; the <em>checkout</em><span class="accent">.</span></span>
+      </h1>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="lede">
+            I’m Abhishek — a full-stack developer and Bachelor of Information Management student in Nepal. I design and build business applications end to end, from database policies to the last pixel of the interface. My latest, <a class="inline-link" href="https://www.orderkhaja.com/" target="_blank" rel="noopener">OrderKhaja</a>, is a subscription SaaS that is live today.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#work">
+              See selected work
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+            </a>
+            <a class="button button--ghost" href="assets/Abhishek_Dhimal_Resume.pdf" download>
+              Résumé <span class="mono button-note">PDF</span>
+            </a>
+          </div>
         </div>
-        <div class="hero-actions">
-          <a href="https://www.linkedin.com/in/abhishek-dhimal-465858387/" target="_blank" rel="noopener noreferrer" class="btn btn-hire-prominent">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26">
-              <rect width="24" height="24" rx="4" fill="#0A0A0A"/>
-              <path fill="#FFFFFF" d="M7.12 9.5H4.5V19h2.62V9.5zM5.81 8.25c.9 0 1.46-.6 1.46-1.35 -.02-.77-.56-1.35-1.44-1.35s-1.46.58-1.46 1.35c0 .75.56 1.35 1.42 1.35h.02zM19.5 19h.01v-5.6 c0-3-1.6-4.4-3.74-4.4-1.72 0-2.49.95-2.92 1.62V9.5H10.24s.03.75 0 9.5h2.62v-5.3c0-.28.02-.57.1-.77 .23-.57.75-1.16 1.62-1.16 1.14 0 1.6.87 1.6 2.15V19h2.32z"/>
-            </svg>
-            Hire me
-          </a>
-          <a href="mailto:abisekdhimal5@gmail.com?subject=Job%20Opportunity%20for%20Abhishek&body=Hi%20Abhishek%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20wanted%20to%20reach%20out%20about..." class="btn btn-secondary">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
-            Email me
-          </a>
-          <a href="#projects" class="btn btn-secondary">View my projects</a>
-          <a href="assets/Abhishek_Dhimal_Resume.pdf" class="btn btn-secondary" download>Download résumé</a>
-          <a href="#contact" class="btn btn-secondary">Contact me</a>
-        </div>
-        <div class="hero-socials" aria-label="Social media links">
-          <a class="icon-btn" id="hero-linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" fill="currentColor">
-              <path d="M100.28 448H7.4V148.9h92.88zm-46.44-341C24.14 107 0 82.85 0 53.19a53.19 53.19 0 0 1 106.38 0c0 29.66-24.14 53.81-53.19 53.81zM447.9 448h-92.68V302.4c0-34.7-.7-79.3-48.29-79.3-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.05v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3z"/>
-            </svg>
-          </a>
-          <a class="icon-btn" id="hero-github" href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.82 1.19 3.08 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/></svg>
-          </a>
-          <a class="icon-btn" id="hero-instagram" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a class="icon-btn" id="hero-whatsapp" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.92L2 22l5.32-1.39a9.86 9.86 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.9C21.95 6.45 17.5 2 12.04 2zm0 18.12h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.18 8.18 0 0 1-1.25-4.34c0-4.53 3.69-8.22 8.24-8.22 2.2 0 4.27.86 5.82 2.42a8.15 8.15 0 0 1 2.41 5.81c0 4.53-3.69 8.2-8.24 8.2zm4.51-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.42-.14 0-.31-.02-.48-.02s-.44.06-.67.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.58.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
-          </a>
+
+        <div class="ticket" role="group" aria-label="Current status" data-reveal>
+          <div class="ticket-head mono">
+            <span>Status</span>
+            <span id="ticketDate">2026</span>
+          </div>
+          <dl class="ticket-rows">
+            <div><dt>Shipping</dt><dd>OrderKhaja <span class="tag tag--live">Live</span></dd></div>
+            <div><dt>Studying</dt><dd>BIM, Tribhuvan University <span class="muted">’26</span></dd></div>
+            <div><dt>Based in</dt><dd>Nepal <span class="muted" id="nepalTime">UTC+5:45</span></dd></div>
+            <div><dt>Open to</dt><dd>Full-stack internships</dd></div>
+          </dl>
+          <div class="ticket-foot mono" aria-hidden="true">
+            <span>abhishekdhimal.com.np</span>
+            <span class="barcode"></span>
+          </div>
         </div>
       </div>
 
+      <nav class="hero-index" aria-label="Selected projects" data-reveal>
+        <a href="#orderkhaja"><span class="mono">01</span><span class="idx-title">OrderKhaja</span><span class="idx-desc">QR table ordering SaaS</span></a>
+        <a href="#pulsemart"><span class="mono">02</span><span class="idx-title">PulseMart</span><span class="idx-desc">E-commerce with an AI admin</span></a>
+        <a href="#flavoro"><span class="mono">03</span><span class="idx-title">Flavoro</span><span class="idx-desc">Restaurant management</span></a>
+      </nav>
     </div>
-  </header>
+  </section>
 
-  <!-- ============ ABOUT ============ -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">About</span>
-        <h2>A little about me</h2>
-      </div>
+  <!-- ============ WORK ============ -->
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <header class="section-head" data-reveal>
+        <p class="mono eyebrow"><span>01</span> Selected work</p>
+        <h2 id="work-title">Three businesses that ran on paper, phone calls and guesswork&nbsp;— and the systems I built to replace that.</h2>
+      </header>
+
+      <!-- Project 01 -->
+      <article class="project project--feature" id="orderkhaja" aria-labelledby="p1-title">
+        <figure class="project-media" data-reveal>
+          <picture>
+            <source type="image/webp" srcset="assets/img/orderkhaja-640.webp 640w, assets/img/orderkhaja-800.webp 800w, assets/img/orderkhaja-1024.webp 1024w, assets/img/orderkhaja-1536.webp 1536w" sizes="(min-width: 1320px) 1210px, (min-width: 900px) 92vw, calc(100vw - 40px)">
+            <img src="assets/orderkhaja.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="OrderKhaja product visual: the owner dashboard on a laptop showing today’s sales, orders and active tables, beside a phone with the guest menu and a ‘Scan to Order’ table stand.">
+          </picture>
+          <figcaption class="mono">Fig. 01 — Product visual: owner dashboard, guest menu, table QR</figcaption>
+        </figure>
+
+        <div class="project-body">
+          <header class="project-head" data-reveal>
+            <p class="mono project-num">01</p>
+            <div>
+              <h3 id="p1-title" class="project-brand"><img class="project-logo" src="assets/img/orderkhaja-logo.png" width="512" height="512" alt="" loading="lazy" decoding="async">OrderKhaja</h3>
+              <p class="project-kind">QR menu &amp; table ordering for cafés and restaurants</p>
+            </div>
+            <p class="mono status"><span class="dot dot--live" aria-hidden="true"></span>Live · Subscription</p>
+          </header>
+
+          <div class="project-cols">
+            <div class="project-col" data-reveal>
+              <h4 class="mono col-label">The problem</h4>
+              <p>Cafés taking orders by phone and paper ticket lose track of tables, mishear orders and guess their numbers at the end of the day.</p>
+              <p>OrderKhaja lets any café sign up and go live in minutes: guests scan the QR on their table and order from their phone — no app to install — while the owner runs everything from one dashboard.</p>
+            </div>
+            <div class="project-col" data-reveal>
+              <h4 class="mono col-label">What I built</h4>
+              <ul class="ledger-list">
+                <li>Multi-tenant architecture with PostgreSQL row-level security, so every restaurant’s data stays isolated</li>
+                <li>QR table ordering, live order tracking, and menu &amp; table management</li>
+                <li>Subscription billing with trial expiry and eSewa, Nepal’s local payment gateway</li>
+                <li>Daily revenue summaries for owners</li>
+              </ul>
+            </div>
+            <div class="project-col project-meta" data-reveal>
+              <dl>
+                <div><dt class="mono">Role</dt><dd>Product design &amp; full-stack development</dd></div>
+                <div><dt class="mono">Stack</dt><dd>Next.js, Supabase, PostgreSQL, Tailwind CSS</dd></div>
+                <div><dt class="mono">Model</dt><dd>Hosted subscription, priced by monthly orders · free trial</dd></div>
+                <div><dt class="mono">Pricing</dt><dd>
+                  <ul class="price-list">
+                    <li><span>Starter <small>under 300 orders</small></span><span>Rs 499<small>/mo</small></span></li>
+                    <li><span>Growing <small>300–1,000 orders</small></span><span>Rs 999<small>/mo</small></span></li>
+                    <li><span>Busy <small>1,000+ orders</small></span><span>Rs 1,499<small>/mo</small></span></li>
+                  </ul>
+                  <p class="price-note">Launch offer: 50% off · yearly plans get 2 months free</p>
+                </dd></div>
+              </dl>
+              <a class="button project-cta" href="https://www.orderkhaja.com/" target="_blank" rel="noopener">
+                Visit orderkhaja.com
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                <span class="visually-hidden">(opens in a new tab)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 02 -->
+      <article class="project project--split" id="pulsemart" aria-labelledby="p2-title">
+        <figure class="project-media" data-reveal>
+          <picture>
+            <source type="image/webp" srcset="assets/img/pulsemart-640.webp 640w, assets/img/pulsemart-800.webp 800w, assets/img/pulsemart-1024.webp 1024w, assets/img/pulsemart-1536.webp 1536w" sizes="(min-width: 1320px) 700px, (min-width: 900px) 54vw, calc(100vw - 40px)">
+            <img src="assets/pulsemart.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="PulseMart product visual: a customer storefront with featured products beside a dark admin dashboard with sales, inventory status and an AI assistant panel listing low-stock items.">
+          </picture>
+          <figcaption class="mono">Fig. 02 — Product visual: storefront, admin dashboard, AI assistant</figcaption>
+        </figure>
+
+        <div class="project-body">
+          <header class="project-head" data-reveal>
+            <p class="mono project-num">02</p>
+            <div>
+              <h3 id="p2-title">PulseMart</h3>
+              <p class="project-kind">Self-hosted e-commerce with an AI-powered admin</p>
+            </div>
+            <p class="mono status"><span class="dot" aria-hidden="true"></span>Available · One-time licence</p>
+          </header>
+
+          <div class="project-text" data-reveal>
+            <p>Small online stores usually choose between paying heavily for a hosted platform or hand-rolling something fragile. PulseMart is a complete, self-hosted alternative — with an admin assistant that answers plain-English questions about orders and inventory, but never changes anything without sign-off.</p>
+            <h4 class="mono col-label">What I built</h4>
+            <ul class="ledger-list">
+              <li>Catalog, cart and checkout with online and cash-on-delivery payment, plus order tracking</li>
+              <li>Email-OTP verified accounts, JWT sessions and self-service password reset</li>
+              <li>AI admin assistant with a confirm-before-write flow and a full audit log</li>
+            </ul>
+            <dl class="project-meta">
+              <div><dt class="mono">Stack</dt><dd>Next.js, React, Node.js, Express, PostgreSQL, Tailwind CSS</dd></div>
+              <div><dt class="mono">Model</dt><dd>From $249, one-time — source code plus personal setup help</dd></div>
+            </dl>
+            <a class="button button--ghost project-cta" href="https://wa.me/9779827064592?text=Hi%20Abhishek%2C%20I%27m%20interested%20in%20PulseMart." target="_blank" rel="noopener">
+              Ask about PulseMart on WhatsApp
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              <span class="visually-hidden">(opens in a new tab)</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 03 -->
+      <article class="project project--split project--flip" id="flavoro" aria-labelledby="p3-title">
+        <figure class="project-media" data-reveal>
+          <picture>
+            <source type="image/webp" srcset="assets/img/flavoro-640.webp 640w, assets/img/flavoro-800.webp 800w, assets/img/flavoro-1024.webp 1024w, assets/img/flavoro-1536.webp 1536w" sizes="(min-width: 1320px) 700px, (min-width: 900px) 54vw, calc(100vw - 40px)">
+            <img src="assets/flavoro.jpg" width="1897" height="911" loading="lazy" decoding="async" alt="Flavoro customer homepage screenshot: a dark navigation bar with delivery status, login and register buttons above a food photograph headlined ‘Taste the Tradition, Slice by Slice.’">
+          </picture>
+          <figcaption class="mono">Fig. 03 — Interface screenshot: customer homepage</figcaption>
+        </figure>
+
+        <div class="project-body">
+          <header class="project-head" data-reveal>
+            <p class="mono project-num">03</p>
+            <div>
+              <h3 id="p3-title">Flavoro</h3>
+              <p class="project-kind">Online food ordering &amp; restaurant management</p>
+            </div>
+            <p class="mono status"><span class="dot dot--muted" aria-hidden="true"></span>Private codebase</p>
+          </header>
+
+          <div class="project-text" data-reveal>
+            <p>Restaurants juggling phone orders and paper tickets lose track of stock and money fast. Flavoro brings it into one system: customers order online, staff work within role-based permissions, and owners see their finances in real time — in an interface built for the phone in their hand.</p>
+            <h4 class="mono col-label">What I built</h4>
+            <ul class="ledger-list">
+              <li>Core backend modules for inventory management and real-time financial tracking</li>
+              <li>Role-based access control for owners and staff</li>
+              <li>A modern, mobile-responsive interface for customers and staff</li>
+            </ul>
+            <dl class="project-meta">
+              <div><dt class="mono">Stack</dt><dd>PHP, MySQL, HTML, CSS, Tailwind CSS, Bootstrap</dd></div>
+              <div><dt class="mono">Access</dt><dd>Not open source — walkthrough available on request</dd></div>
+            </dl>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ APPROACH ============ -->
+  <section class="section section--alt" id="approach" aria-labelledby="approach-title">
+    <div class="wrap">
+      <header class="section-head" data-reveal>
+        <p class="mono eyebrow"><span>02</span> Approach</p>
+        <h2 id="approach-title">I like software that a café owner can trust on a Saturday night rush.</h2>
+      </header>
+
       <div class="about-grid">
-        <div class="about-text">
-          <p>
-            I'm a motivated Bachelor of Information Management (BIM) student with strong hands-on experience in full-stack web development. I'm passionate about building functional business applications and designing clean, modern user interfaces — and I'm currently looking for an internship opportunity to put my skills to work in a professional, fast-paced development environment.
-          </p>
-          <p>
-            My work spans backend engineering in PHP and Node.js, relational database design with MySQL and PostgreSQL, and building responsive, production-ready frontends with Tailwind CSS and Bootstrap — including payment integrations and AI-assisted admin tooling.
-          </p>
+        <div class="about-copy" data-reveal>
+          <p>I’m drawn to the unglamorous problems that decide whether a small business has a good day: the order that got misheard, the stock count nobody updated, the bill that doesn’t add up. I enjoy owning the whole path — the data model, the security rules, the payment flow and the interface people actually touch.</p>
+          <p>Right now I’m finishing my BIM at Tribhuvan University and looking for an internship on a team that ships real products, where I can learn fast from experienced engineers and contribute from the first week.</p>
         </div>
-        <div class="about-facts">
-          <div class="fact">
-            <div class="label">Location</div>
-            <div class="value">Nepal</div>
-          </div>
-          <div class="fact">
-            <div class="label">Email</div>
-            <div class="value">abisekdhimal5@gmail.com</div>
-          </div>
-          <div class="fact">
-            <div class="label">Education</div>
-            <div class="value">B.I.M., Tribhuvan University (Exp. 2026)</div>
-          </div>
-          <div class="fact">
-            <div class="label">Career goal</div>
-            <div class="value">Internship in full-stack development</div>
-          </div>
-        </div>
+
+        <dl class="facts" data-reveal>
+          <div><dt class="mono">Education</dt><dd>Bachelor of Information Management, Tribhuvan University — expected 2026</dd></div>
+          <div><dt class="mono">Focus</dt><dd>Full-stack business applications &amp; clean, modern interfaces</dd></div>
+          <div><dt class="mono">Seeking</dt><dd>Internship in full-stack development</dd></div>
+          <div><dt class="mono">Strengths</dt><dd>Problem solving, clean &amp; maintainable code, learning quickly</dd></div>
+        </dl>
       </div>
+
+      <h3 class="mono subhead" data-reveal>Principles, and where they show up</h3>
+      <ol class="principles">
+        <li data-reveal>
+          <span class="mono principle-num">i.</span>
+          <h4>Isolation by default</h4>
+          <p>Every restaurant on OrderKhaja shares one database, so separation is enforced at the database itself with row-level security policies — not left to application code to remember.</p>
+          <p class="mono principle-ref">In OrderKhaja</p>
+        </li>
+        <li data-reveal>
+          <span class="mono principle-num">ii.</span>
+          <h4>AI proposes, people approve</h4>
+          <p>PulseMart’s assistant can read the store and suggest changes, but nothing is written until an admin confirms — and every action lands in an audit log.</p>
+          <p class="mono principle-ref">In PulseMart</p>
+        </li>
+        <li data-reveal>
+          <span class="mono principle-num">iii.</span>
+          <h4>Built for the people at the counter</h4>
+          <p>Staff get exactly the permissions their role needs, owners see the money in real time, and every screen works on the phone already in their pocket.</p>
+          <p class="mono principle-ref">In Flavoro</p>
+        </li>
+        <li data-reveal>
+          <span class="mono principle-num">iv.</span>
+          <h4>Made for where it’s used</h4>
+          <p>Payments through eSewa, prices in rupees, and guests who order without installing anything — local details decide whether software gets adopted.</p>
+          <p class="mono principle-ref">In OrderKhaja</p>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <!-- ============ SKILLS ============ -->
-  <section class="section" id="skills">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">Skills</span>
-        <h2>What I work with</h2>
-        <p class="sub">Technologies and methodologies I use to design, develop, and deploy software.</p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Programming Languages</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">C</span>
-            <span class="skill-tag">PHP</span>
-            <span class="skill-tag">JavaScript</span>
-          </div>
-        </div>
-        <div class="skill-card">
-          <h3>Web Technologies &amp; UI/UX</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">HTML</span>
-            <span class="skill-tag">CSS</span>
-            <span class="skill-tag">Tailwind CSS</span>
-            <span class="skill-tag">Bootstrap</span>
-          </div>
-        </div>
-        <div class="skill-card">
-          <h3>Databases &amp; Strengths</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">Problem Solving</span>
-            <span class="skill-tag">Clean Code</span>
-            <span class="skill-tag">Quick Learner</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ============ TOOLKIT ============ -->
+  <section class="section" id="toolkit" aria-labelledby="toolkit-title">
+    <div class="wrap">
+      <header class="section-head section-head--row" data-reveal>
+        <p class="mono eyebrow"><span>03</span> Toolkit</p>
+        <h2 id="toolkit-title">What I build with&nbsp;— and where I’ve used it.</h2>
+      </header>
 
-  <!-- ============ PROJECTS ============ -->
-  <section class="section" id="projects">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">Projects</span>
-        <h2>Selected work</h2>
-        <p class="sub">A sample of software projects, full-stack systems, and web utilities I have built.</p>
-      </div>
-      <div class="projects-grid">
-        <div class="project-card project-card--paid">
-          <div class="project-media">
-            <div class="project-media-placeholder" id="cafesaas-media-placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h14v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9z"/><path d="M17 9h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M7 3v3M11 3v3M15 3v3"/></svg>
-            </div>
-            <!-- TODO: add assets/cafe-saas.jpg (a screenshot of the ordering page or owner dashboard) -->
-            <img src="assets/cafe-saas.jpg" alt="Cafe SaaS QR ordering and owner dashboard" loading="lazy"
-              onerror="this.style.display='none'"
-              onload="document.getElementById('cafesaas-media-placeholder').style.display='none'">
-            <span class="project-badge project-badge--media">PAID</span>
-          </div>
-          <div class="project-card-body">
-            <h3>Cafe SaaS — QR Table Ordering</h3>
-            <p>Restaurants running orders through phone calls and paper tickets lose track of tables and revenue fast. Cafe SaaS replaces that with a self-serve platform: customers scan a QR code at their table, browse the menu, and order — while the owner watches orders come in live, manages the menu and tables, and gets a daily revenue summary. Any restaurant can sign up and go live in minutes.</p>
-            <div class="project-tags"><span>Next.js</span><span>Supabase</span><span>PostgreSQL</span><span>Tailwind CSS</span></div>
-            <p class="project-price">NPR 100/table/month <span>· hosted subscription</span></p>
-            <div class="project-demo-cta">
-              <a class="project-demo-btn" id="cafesaas-demo-link" href="https://orderkhaja.com/" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
-                Try Live Demo
-              </a>
-            </div>
-          </div>
+      <div class="toolkit" role="table" aria-label="Technical toolkit">
+        <div class="toolkit-row toolkit-row--head mono" role="row">
+          <span role="columnheader">Area</span>
+          <span role="columnheader">Tools</span>
+          <span role="columnheader">Used in</span>
         </div>
-        <div class="project-card project-card--paid">
-          <div class="project-media">
-            <div class="project-media-placeholder" id="pulsemart-media-placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M2.5 3h2.6l2.7 12.2a2 2 0 0 0 2 1.6h8.1a2 2 0 0 0 2-1.6L21.5 8H6"/></svg>
-            </div>
-            <img src="assets/pulsemart.jpg" alt="PulseMart storefront and admin dashboard" loading="lazy"
-              onerror="this.style.display='none'"
-              onload="document.getElementById('pulsemart-media-placeholder').style.display='none'">
-            <span class="project-badge project-badge--media">PAID</span>
-          </div>
-          <div class="project-card-body">
-            <h3>PulseMart</h3>
-            <p>Most small online stores either pay heavily for a SaaS platform or hand-roll something fragile. PulseMart is a complete, self-hosted alternative: full storefront and checkout, email-OTP verified accounts, and an AI-powered admin assistant that answers plain-English questions about orders and inventory — with a confirm-before-write flow and full audit log, so nothing changes without sign-off.</p>
-            <div class="project-tags"><span>Next.js</span><span>React</span><span>Node.js</span><span>PostgreSQL</span></div>
-            <p class="project-price">From $249 <span>· one-time — source code, plus I'll personally help you set it up</span></p>
-            <div class="project-demo-cta">
-              <!-- TODO: replace with your real deployed demo URL, e.g. https://demo.abhishekdhimal.com.np -->
-              <a class="project-demo-btn" id="pulsemart-demo-link" href="https://demo.abhishekdhimal.com.np" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
-                Try Live Demo
-              </a>
-              <!-- TODO: set up a demo account (see guide below) and update these credentials -->
-              <span class="project-demo-note">Demo login: demo@pulsemart.com / demo1234</span>
-            </div>
-            <a class="project-link" id="pulsemart-buy-link" href="https://wa.me/9779827064592?text=Hi%20Abhishek%2C%20I%27m%20interested%20in%20PulseMart." target="_blank" rel="noopener noreferrer">View &amp; Buy →</a>
-          </div>
+        <div class="toolkit-row" role="row" data-reveal>
+          <span class="toolkit-area" role="rowheader">Frameworks &amp; runtime</span>
+          <span class="toolkit-tools" role="cell">Next.js, React, Node.js, Express</span>
+          <span class="toolkit-used mono" role="cell">OrderKhaja · PulseMart</span>
         </div>
-        <div class="project-card project-card--paid">
-          <div class="project-media">
-            <div class="project-media-placeholder" id="flavoro-media-placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v6M12 2v6M16 2v6M6 8h12l-1 13a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8z"/></svg>
-            </div>
-            <img src="assets/flavoro.jpg" alt="Flavoro restaurant ordering interface" loading="lazy"
-              onerror="this.style.display='none'"
-              onload="document.getElementById('flavoro-media-placeholder').style.display='none'">
-            <span class="project-badge project-badge--media">LOCKED</span>
-          </div>
-          <div class="project-card-body">
-            <h3>Flavoro Restaurant System</h3>
-            <p>Restaurants running orders through phone calls and paper tickets lose track of stock and money fast. Flavoro replaces that with one system: customers order online, staff manage inventory and role-based access, and owners see real-time financial tracking — all in a clean, mobile-responsive interface.</p>
-            <div class="project-tags"><span>PHP</span><span>MySQL</span><span>Tailwind CSS</span></div>
-            <span class="project-link project-link--locked">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-              Locked — private, not open source
-            </span>
-          </div>
+        <div class="toolkit-row" role="row" data-reveal>
+          <span class="toolkit-area" role="rowheader">Data &amp; platforms</span>
+          <span class="toolkit-tools" role="cell">PostgreSQL, Supabase, MySQL</span>
+          <span class="toolkit-used mono" role="cell">OrderKhaja · PulseMart · Flavoro</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CERTIFICATIONS & INTERESTS ============ -->
-  <section class="section" id="certifications">
-    <div class="container split-grid">
-      <div class="list-block">
-        <div class="section-head" style="margin-bottom:28px;">
-          <span class="kicker">Education</span>
-          <h2>Credentials</h2>
+        <div class="toolkit-row" role="row" data-reveal>
+          <span class="toolkit-area" role="rowheader">Interface</span>
+          <span class="toolkit-tools" role="cell">HTML, CSS, Tailwind CSS, Bootstrap</span>
+          <span class="toolkit-used mono" role="cell">OrderKhaja · PulseMart · Flavoro</span>
         </div>
-        <ul>
-          <li><span><strong>Bachelor of Information Management (BIM)</strong><br>Tribhuvan University</span><span class="meta">Exp. 2026</span></li>
-        </ul>
-      </div>
-      <div class="list-block">
-        <div class="section-head" style="margin-bottom:28px;">
-          <span class="kicker">Strengths</span>
-          <h2>What I bring</h2>
+        <div class="toolkit-row" role="row" data-reveal>
+          <span class="toolkit-area" role="rowheader">Systems I’ve shipped</span>
+          <span class="toolkit-tools" role="cell">Multi-tenancy &amp; row-level security, subscription billing, eSewa &amp; cash-on-delivery payments, email-OTP &amp; JWT auth, role-based access, AI-assisted admin tooling</span>
+          <span class="toolkit-used mono" role="cell">Across all three</span>
         </div>
-        <div class="interest-pills">
-          <span>Strong Problem Solver</span>
-          <span>Clean &amp; Maintainable Code</span>
-          <span>Eager to Learn &amp; Adapt</span>
+        <div class="toolkit-row" role="row" data-reveal>
+          <span class="toolkit-area" role="rowheader">Languages</span>
+          <span class="toolkit-tools" role="cell">JavaScript, PHP, Python, Java, C</span>
+          <span class="toolkit-used mono" role="cell">JavaScript &amp; PHP in shipped work</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============ CONTACT ============ -->
-  <section class="section" id="contact" style="border-bottom:none;">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">Contact</span>
-        <h2>Let's talk</h2>
-        <p class="sub">Direct communication channels to get in touch with me.</p>
-      </div>
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <p class="mono eyebrow" data-reveal><span>04</span> Contact</p>
+      <h2 class="contact-title" id="contact-title" data-reveal>Have a role, a project&nbsp;— or a&nbsp;café still running on paper tickets?</h2>
+
       <div class="contact-grid">
-        <a class="contact-card" id="contact-email" href="#">
-          <span class="icon-btn" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
-          </span>
-          <span class="label">Email</span>
-        </a>
-        <a class="contact-card" id="contact-whatsapp" href="#" target="_blank" rel="noopener noreferrer">
-          <span class="icon-btn" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.92L2 22l5.32-1.39a9.86 9.86 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.9C21.95 6.45 17.5 2 12.04 2zm0 18.12h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.18 8.18 0 0 1-1.25-4.34c0-4.53 3.69-8.22 8.24-8.22 2.2 0 4.27.86 5.82 2.42a8.15 8.15 0 0 1 2.41 5.81c0 4.53-3.69 8.2-8.24 8.2z"/></svg>
-          </span>
-          <span class="label">WhatsApp</span>
-        </a>
-        <a class="contact-card" id="contact-github" href="#" target="_blank" rel="noopener noreferrer">
-          <span class="icon-btn" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.82 1.19 3.08 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/></svg>
-          </span>
-          <span class="label">GitHub</span>
-        </a>
-        <a class="contact-card" id="contact-linkedin" href="#" target="_blank" rel="noopener noreferrer">
-          <span class="icon-btn" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" fill="currentColor">
-              <path d="M100.28 448H7.4V148.9h92.88zm-46.44-341C24.14 107 0 82.85 0 53.19a53.19 53.19 0 0 1 106.38 0c0 29.66-24.14 53.81-53.19 53.81zM447.9 448h-92.68V302.4c0-34.7-.7-79.3-48.29-79.3-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.05v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3z"/>
-            </svg>
-          </span>
-          <span class="label">LinkedIn</span>
-        </a>
-        <a class="contact-card" id="contact-instagram" href="#" target="_blank" rel="noopener noreferrer">
-          <span class="icon-btn" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
-          </span>
-          <span class="label">Instagram</span>
-        </a>
-        <a class="contact-card" id="contact-facebook" href="#" target="_blank" rel="noopener noreferrer">
-          <span class="icon-btn" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
-          </span>
-          <span class="label">Facebook</span>
-        </a>
+        <div class="contact-primary" data-reveal>
+          <p class="contact-lede">Email is the best way to reach me — or pick whichever channel suits you.</p>
+          <div class="email-row">
+            <a class="email-link" href="mailto:abisekdhimal5@gmail.com?subject=Hello%20Abhishek">abisekdhimal5@gmail.com</a>
+            <button class="icon-button copy-button" type="button" id="copyEmail" data-copy="abisekdhimal5@gmail.com" aria-label="Copy email address">
+              <svg class="i-copy" viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 8.5V5.5a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></svg>
+              <svg class="i-check" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+            </button>
+          </div>
+          <p class="mono copy-status" id="copyStatus" role="status" aria-live="polite"></p>
+          <p class="mono local-time">Local time in Nepal: <span id="contactTime">UTC+5:45</span></p>
+        </div>
+
+        <ul class="channels" data-reveal>
+          <li>
+            <a href="https://wa.me/9779827064592" target="_blank" rel="noopener">
+              <span class="channel-name">WhatsApp</span>
+              <span class="channel-handle mono">+977 982 706 4592</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/abhishek-dhimal-465858387/" target="_blank" rel="noopener">
+              <span class="channel-name">LinkedIn</span>
+              <span class="channel-handle mono">abhishek-dhimal</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/abisek-stack" target="_blank" rel="noopener">
+              <span class="channel-name">GitHub</span>
+              <span class="channel-handle mono">abisek-stack</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/imabisek_3/" target="_blank" rel="noopener">
+              <span class="channel-name">Instagram</span>
+              <span class="channel-handle mono">imabisek_3</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/abishek.dhimal.1447" target="_blank" rel="noopener">
+              <span class="channel-name">Facebook</span>
+              <span class="channel-handle mono">abishek.dhimal</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
@@ -1063,94 +480,16 @@
 </main>
 
 <!-- ============ FOOTER ============ -->
-<footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <span class="logo">Abhishek Dhimal</span>
-      <p>&copy; <span id="year"></span> Abhishek Dhimal. All rights reserved.</p>
-    </div>
-    <div class="footer-socials" aria-label="Social media links">
-      <a class="icon-btn" id="footer-github" href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.82 1.19 3.08 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/></svg>
-      </a>
-      <a class="icon-btn" id="footer-linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" fill="currentColor">
-          <path d="M100.28 448H7.4V148.9h92.88zm-46.44-341C24.14 107 0 82.85 0 53.19a53.19 53.19 0 0 1 106.38 0c0 29.66-24.14 53.81-53.19 53.81zM447.9 448h-92.68V302.4c0-34.7-.7-79.3-48.29-79.3-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.05v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3z"/>
-        </svg>
-      </a>
-      <a class="icon-btn" id="footer-instagram" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
-      </a>
-      <a class="icon-btn" id="footer-facebook" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
-      </a>
-      <a class="icon-btn" id="footer-whatsapp" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.92L2 22l5.32-1.39a9.86 9.86 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.45 9.9-9.9C21.95 6.45 17.5 2 12.04 2zm0 18.12h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.18 8.18 0 0 1-1.25-4.34c0-4.53 3.69-8.22 8.24-8.22 2.2 0 4.27.86 5.82 2.42a8.15 8.15 0 0 1 2.41 5.81c0 4.53-3.69 8.2-8.24 8.2z"/></svg>
-      </a>
-      <a class="icon-btn" id="footer-email" href="#" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
-      </a>
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-mark" aria-hidden="true">Abhishek Dhimal<span class="accent">.</span></p>
+    <div class="footer-row mono">
+      <p>© <span id="year">2026</span> Abhishek Dhimal</p>
+      <p>Hand-built with HTML, CSS &amp; a little JavaScript</p>
+      <a href="#top" class="back-top">Back to top <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
     </div>
   </div>
 </footer>
-
-<script>
-  (function () {
-    var L = window.SOCIAL_LINKS;
-
-    var map = {
-      github:    ["hero-github", "contact-github", "footer-github"],
-      linkedin:  ["hero-linkedin", "contact-linkedin", "footer-linkedin"],
-      instagram: ["hero-instagram", "contact-instagram", "footer-instagram"],
-      facebook:  ["contact-facebook", "footer-facebook"],
-      whatsapp:  ["hero-whatsapp", "contact-whatsapp", "footer-whatsapp"],
-      email:     ["contact-email", "footer-email"]
-    };
-
-    Object.keys(map).forEach(function (key) {
-      map[key].forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el) el.setAttribute("href", L[key]);
-      });
-    });
-
-    var toggle = document.getElementById("navToggle");
-    var nav = document.getElementById("siteNav");
-    if (toggle && nav) {
-      toggle.addEventListener("click", function () {
-        var isOpen = nav.classList.toggle("open");
-        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      });
-      nav.querySelectorAll(".nav-links a").forEach(function (a) {
-        a.addEventListener("click", function () {
-          nav.classList.remove("open");
-          toggle.setAttribute("aria-expanded", "false");
-        });
-      });
-    }
-
-    var y = document.getElementById("year");
-    if (y) y.textContent = new Date().getFullYear();
-
-    var themeToggle = document.getElementById("themeToggle");
-    if (themeToggle) {
-      var themeColor = document.getElementById("themeColor");
-      var current = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
-      var syncToggle = function (theme) {
-        themeToggle.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
-        themeToggle.setAttribute("aria-label", theme === "light" ? "Switch to dark mode" : "Switch to light mode");
-        if (themeColor) themeColor.setAttribute("content", theme === "light" ? "#FAF5EA" : "#131417");
-      };
-      syncToggle(current);
-      themeToggle.addEventListener("click", function () {
-        current = current === "light" ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", current);
-        try { localStorage.setItem("theme", current); } catch (e) {}
-        syncToggle(current);
-      });
-    }
-  })();
-</script>
 
 </body>
 </html>

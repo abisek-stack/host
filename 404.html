@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page not found — Abhishek Dhimal</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F3EFE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12110E" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap not-found">
+  <p class="mono eyebrow"><span>404</span> Order not found</p>
+  <h1>This page isn’t on the menu<span class="accent">.</span></h1>
+  <p class="lede">The link may be old or mistyped. Everything lives on the home page.</p>
+  <p class="hero-actions"><a class="button" href="/">Back to the portfolio</a></p>
+</main>
+<style>
+  .not-found { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-block: 64px; }
+  .not-found h1 { margin-top: 24px; font-size: var(--t-h3); font-weight: 340; line-height: 1.02; letter-spacing: -0.03em; max-width: 16ch; }
+  .not-found .lede { margin-top: 24px; }
+</style>
+</body>
+</html>
