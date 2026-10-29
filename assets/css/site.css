@@ -288,7 +288,8 @@ svg[aria-hidden="true"] {
 .button svg { width: 18px; height: 18px; transition: transform var(--base) var(--ease-out); }
 .button:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .button:hover svg { transform: translate(2px, -2px); }
-.button[href="#work"]:hover svg { transform: translateY(3px); }
+.button[href="#work"]:hover svg,
+.button[download]:hover svg { transform: translateY(3px); }
 
 .button--ghost { background: transparent; color: var(--ink); border-color: var(--line); }
 .button--ghost:hover { background: transparent; color: var(--ink); border-color: var(--ink); }
@@ -420,6 +421,9 @@ svg[aria-hidden="true"] {
 .menu-button[aria-expanded="true"] .menu-button-lines span:first-child { top: 3.25px; transform: rotate(45deg); }
 .menu-button[aria-expanded="true"] .menu-button-lines span:last-child { top: 3.25px; transform: rotate(-45deg); }
 
+@media (max-width: 1099px) {
+  .header-cta.button--ghost { display: none; }
+}
 @media (max-width: 899px) {
   .primary-nav, .header-cta { display: none; }
   .menu-button { display: inline-flex; }
@@ -886,7 +890,15 @@ dl.project-meta > div {
 .principle-ref { margin-top: auto; padding-top: 20px; color: var(--ink-3); }
 
 /* ---------- Toolkit ---------- */
-.toolkit { border-top: 1px solid var(--line-strong); }
+.toolkit {
+  display: block;
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid var(--line-strong);
+}
+.toolkit thead, .toolkit tbody { display: block; }
+.toolkit th, .toolkit td { padding: 0; text-align: left; font-weight: inherit; }
+.toolkit-row--head th { font-weight: 400; }
 .toolkit-row {
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 6fr) minmax(0, 3fr);
@@ -956,6 +968,32 @@ dl.project-meta > div {
 .copy-status { min-height: 1.5em; margin-top: 10px; color: var(--fin-dim); }
 .local-time { margin-top: 28px; color: var(--fin-dim); }
 .local-time span { color: var(--fin-fg); font-variant-numeric: tabular-nums; }
+
+.resume-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 440px;
+  margin-top: 32px;
+  padding: 18px 20px;
+  border: 1px solid var(--fin-line);
+  border-radius: var(--radius);
+  transition: border-color var(--fast) var(--ease), background-color var(--fast) var(--ease);
+}
+.resume-card-text { display: grid; gap: 4px; }
+.resume-card-label { color: var(--fin-dim); }
+.resume-card-title {
+  font-family: var(--f-display);
+  font-size: 1.375rem;
+  font-weight: 380;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.resume-card svg { width: 22px; height: 22px; flex-shrink: 0; transition: transform var(--base) var(--ease-out); }
+.resume-card:hover { border-color: var(--accent); }
+.resume-card:hover .resume-card-title, .resume-card:hover svg { color: var(--accent); }
+.resume-card:hover svg { transform: translateY(3px); }
 
 .channels a {
   display: grid;
