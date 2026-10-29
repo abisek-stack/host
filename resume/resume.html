@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Abhishek Dhimal — Résumé</title>
+<!-- Source for assets/Abhishek_Dhimal_Resume.pdf (A4, one page). Rebuild the PDF after editing. -->
+<style>
+  @font-face { font-family: "Fraunces"; src: url("../assets/fonts/fraunces.woff2") format("woff2"); font-weight: 300 700; }
+  @font-face { font-family: "Fraunces"; src: url("../assets/fonts/fraunces-italic.woff2") format("woff2"); font-weight: 300 700; font-style: italic; }
+  @font-face { font-family: "Geist"; src: url("../assets/fonts/geist.woff2") format("woff2"); font-weight: 400 600; }
+  @font-face { font-family: "Geist Mono"; src: url("../assets/fonts/geist-mono.woff2") format("woff2"); font-weight: 400 500; }
+
+  @page { size: A4; margin: 0; }
+  :root {
+    --ink: #17150f; --ink-2: #47423a; --ink-3: #6a645a; --line: #ddd6c8;
+    --accent: #c2361b; --ok-green: #162c1f; --tint: #f5f2eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; }
+  body {
+    font-family: "Geist", system-ui, sans-serif;
+    font-size: 8.9pt;
+    line-height: 1.42;
+    color: var(--ink);
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  .mono { font-family: "Geist Mono", ui-monospace, monospace; font-size: 6.9pt; letter-spacing: 0.07em; text-transform: uppercase; }
+  .page { position: relative; height: 296.5mm; overflow: hidden; padding: 12mm 14mm 9mm; display: flex; flex-direction: column; }
+
+  /* Header */
+  .head { display: grid; grid-template-columns: 1fr auto; gap: 8mm; align-items: end; padding-bottom: 4mm; border-bottom: 1.2pt solid var(--ink); }
+  .name { font-family: "Fraunces", Georgia, serif; font-weight: 340; font-size: 34pt; line-height: 0.95; letter-spacing: -0.035em; }
+  .name .dot { color: var(--accent); }
+  .role { margin-top: 2.6mm; font-family: "Fraunces", Georgia, serif; font-size: 11.5pt; font-weight: 380; letter-spacing: -0.01em; color: var(--ink-2); }
+  .role em { font-style: italic; color: var(--ink); }
+  .contact { margin-top: 3mm; display: flex; flex-wrap: wrap; gap: 1mm 5mm; color: var(--ink-2); font-size: 8.2pt; }
+  .qr { display: grid; grid-template-columns: auto 27mm; gap: 3mm; align-items: center; text-align: right; }
+  .qr img { width: 27mm; height: 27mm; }
+  .qr-cap { display: grid; gap: 1mm; max-width: 30mm; }
+  .qr-cap .mono { color: var(--ink-3); }
+  .qr-cap b { font-family: "Fraunces", Georgia, serif; font-weight: 400; font-size: 10.5pt; line-height: 1.15; }
+  .qr-cap a { color: var(--accent); font-size: 8pt; font-weight: 500; }
+
+  /* Layout */
+  .body { flex: 1; display: grid; grid-template-columns: 1fr 50mm; gap: 8mm; padding-top: 4.5mm; }
+  h2 { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 2.6mm; font-family: "Geist Mono", monospace; font-weight: 500; font-size: 7.2pt; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink); }
+  h2 span { color: var(--accent); }
+  h2::after { content: ""; flex: 1; height: 0.6pt; background: var(--line); }
+  section + section { margin-top: 4mm; }
+  .lede { color: var(--ink-2); font-size: 9.4pt; line-height: 1.5; }
+  .lede strong { color: var(--ink); font-weight: 500; }
+
+  /* Flagship */
+  .flag { border: 0.8pt solid var(--line); border-left: 2.4pt solid var(--ok-green); border-radius: 2mm; padding: 3.6mm 4mm 3.4mm; background: linear-gradient(var(--tint), #fff 30mm); }
+  .flag-top { display: grid; grid-template-columns: auto 1fr auto; gap: 3mm; align-items: center; }
+  .flag-top img { width: 10mm; height: 10mm; border-radius: 2mm; }
+  .flag-title { font-family: "Fraunces", Georgia, serif; font-size: 15pt; font-weight: 400; letter-spacing: -0.02em; line-height: 1.05; }
+  .flag-sub { color: var(--ink-2); font-size: 8.4pt; }
+  .flag-when { text-align: right; color: var(--ink-3); }
+  .flag-when .live { display: inline-flex; align-items: center; gap: 1.4mm; color: #2c7a4b; }
+  .flag-when .live::before { content: ""; width: 1.6mm; height: 1.6mm; border-radius: 50%; background: #2c7a4b; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); margin: 3.2mm 0 2.6mm; border-block: 0.6pt solid var(--line); }
+  .stats div { padding: 1.8mm 0 1.6mm 2.6mm; }
+  .stats div + div { border-left: 0.6pt solid var(--line); }
+  .stats div:first-child { padding-left: 0; }
+  .stats b { display: block; font-family: "Fraunces", Georgia, serif; font-weight: 360; font-size: 15pt; line-height: 1; letter-spacing: -0.02em; }
+  .stats .mono { color: var(--ink-3); font-size: 6pt; }
+  .bullets li { position: relative; padding-left: 3.6mm; margin-top: 1.25mm; color: var(--ink-2); }
+  .bullets li::before { content: ""; position: absolute; left: 0; top: 1.9mm; width: 1.6mm; height: 0.8pt; background: var(--accent); }
+  .bullets strong { color: var(--ink); font-weight: 500; }
+  .stack { margin-top: 2.4mm; color: var(--ink-3); text-transform: none; letter-spacing: 0.02em; font-size: 7pt; }
+
+  .proj { padding: 2.2mm 0; border-top: 0.6pt solid var(--line); }
+  .proj:last-child { padding-bottom: 0; }
+  .proj-top { display: flex; justify-content: space-between; gap: 3mm; align-items: baseline; }
+  .proj-title { font-family: "Fraunces", Georgia, serif; font-size: 10.5pt; font-weight: 420; }
+  .proj p { margin-top: 0.6mm; color: var(--ink-2); }
+  .proj .mono { color: var(--ink-3); text-transform: none; letter-spacing: 0.02em; }
+
+  /* Sidebar */
+  .side .group + .group { margin-top: 2.6mm; }
+  .side .label { color: var(--ink-3); margin-bottom: 0.8mm; }
+  .side p, .side li { color: var(--ink); font-size: 8.4pt; line-height: 1.45; }
+  .side .muted { color: var(--ink-2); }
+  .side ul li { padding-left: 3mm; position: relative; }
+  .side ul li::before { content: "·"; position: absolute; left: 0.4mm; color: var(--accent); font-weight: 600; }
+  .edu-title { font-family: "Fraunces", Georgia, serif; font-size: 10pt; font-weight: 420; line-height: 1.2; }
+
+  .foot { display: flex; justify-content: space-between; margin-top: 3mm; padding-top: 2.6mm; border-top: 0.6pt solid var(--line); color: var(--ink-3); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="head">
+    <div>
+      <h1 class="name">Abhishek Dhimal<span class="dot">.</span></h1>
+      <p class="role">Full-stack developer · Founder &amp; sole engineer of <em>OrderKhaja</em></p>
+      <p class="contact">
+        <span><a href="mailto:abisekdhimal5@gmail.com">abisekdhimal5@gmail.com</a></span>
+        <span><a href="tel:+9779827064592">+977 982 706 4592</a></span>
+        <span><a href="https://abhishekdhimal.com.np">abhishekdhimal.com.np</a></span>
+        <span><a href="https://www.linkedin.com/in/abhishek-dhimal-465858387/">linkedin.com/in/abhishek-dhimal-465858387</a></span>
+        <span><a href="https://github.com/abisek-stack">github.com/abisek-stack</a></span>
+      </p>
+    </div>
+    <a class="qr" href="https://www.orderkhaja.com/">
+      <span class="qr-cap">
+        <span class="mono">Scan me</span>
+        <b>Try OrderKhaja</b>
+        <span>orderkhaja.com</span>
+      </span>
+      <img src="../assets/img/orderkhaja-qr.png" alt="QR code to orderkhaja.com">
+    </a>
+  </header>
+
+  <div class="body">
+    <main>
+      <section>
+        <h2><span>01</span> Profile</h2>
+        <p class="lede">Full-stack developer who designed, built and runs <strong>OrderKhaja</strong> — a live, multi-tenant SaaS for QR ordering and billing in cafés and restaurants across Nepal. I own the whole product: <strong>PostgreSQL security policies, payment integrations, CI and backups,</strong> and the interface staff use in the middle of a rush. BIM student at Tribhuvan University, seeking a full-stack internship on a team that ships real products.</p>
+      </section>
+
+      <section>
+        <h2><span>02</span> Flagship experience</h2>
+        <article class="flag">
+          <div class="flag-top">
+            <img src="../assets/img/orderkhaja-logo-160.webp" alt="">
+            <div>
+              <p class="flag-title">OrderKhaja</p>
+              <p class="flag-sub">Founder &amp; sole engineer · <a href="https://www.orderkhaja.com/">orderkhaja.com</a></p>
+            </div>
+            <p class="flag-when mono"><span class="live">Live</span><br>Sep 2026 – Present</p>
+          </div>
+
+          <div class="stats">
+            <div><b>298</b><span class="mono">commits, solo</span></div>
+            <div><b>116</b><span class="mono">SQL migrations</span></div>
+            <div><b>94</b><span class="mono">tests passing</span></div>
+            <div><b>42k+</b><span class="mono">lines TypeScript</span></div>
+          </div>
+
+          <ul class="bullets">
+            <li>Built a <strong>multi-tenant QR ordering &amp; billing SaaS</strong>: guests scan a table QR and order with no app (English or Nepali); cafés sign up and go live the same day, on plans priced by monthly orders.</li>
+            <li>Shipped a <strong>real-time floor view</strong> with ringing order alerts and web push, a kitchen screen, <strong>thermal KOT printing</strong>, bills with 13% VAT and service charge, staff roles, discounts, loyalty, stock and day-close reports.</li>
+            <li>Integrated <strong>Khalti, eSewa and Fonepay/bank QR</strong> payments, including EMV QR codes with the bill amount pre-filled, plus subscription billing with free trials.</li>
+            <li>Enforced <strong>tenant isolation with PostgreSQL row-level security</strong>; ran my own security audit and shipped a hardening migration — server-side order-total verification, column-level grants, rate limits and security headers.</li>
+            <li>Automated delivery and operations with <strong>GitHub Actions</strong>: lint, type-check, tests and build on every push; daily database backups, monthly restore tests and 15-minute uptime checks.</li>
+          </ul>
+          <p class="stack mono">Next.js · React · TypeScript · Supabase (PostgreSQL, Auth, Storage) · Tailwind CSS · Vercel · GitHub Actions</p>
+        </article>
+      </section>
+
+      <section>
+        <h2><span>03</span> Earlier projects</h2>
+        <div class="proj">
+          <div class="proj-top"><span class="proj-title">PulseMart — e-commerce</span><span class="mono">Next.js · Express · PostgreSQL</span></div>
+          <p>Catalog, cart and checkout; email-OTP sign-up with JWT sessions; an AI admin assistant that confirms before writing and logs every action.</p>
+        </div>
+        <div class="proj">
+          <div class="proj-top"><span class="proj-title">Flavoro — first full-stack build</span><span class="mono">PHP · MySQL · Tailwind CSS</span></div>
+          <p>Online food ordering with inventory, simple financial tracking and role-based access for restaurant staff.</p>
+        </div>
+      </section>
+    </main>
+
+    <aside class="side">
+      <section>
+        <h2>Skills</h2>
+        <div class="group"><p class="label mono">Languages</p><p>TypeScript, JavaScript, SQL, PHP, Python, Java, C</p></div>
+        <div class="group"><p class="label mono">Frontend</p><p>Next.js (App Router), React, Tailwind CSS, PWA</p></div>
+        <div class="group"><p class="label mono">Backend &amp; data</p><p>PostgreSQL, Supabase, Node.js, Express, MySQL</p></div>
+        <div class="group"><p class="label mono">Integrations</p><p>Khalti, eSewa, Fonepay QR, Web Push, KOT printing</p></div>
+        <div class="group"><p class="label mono">Delivery</p><p>Vercel, GitHub Actions, backups &amp; restore testing</p></div>
+      </section>
+
+      <section>
+        <h2>Engineering</h2>
+        <ul>
+          <li>Multi-tenant SaaS design</li>
+          <li>Row-level security</li>
+          <li>Payments &amp; billing</li>
+          <li>Real-time UIs</li>
+          <li>Testing &amp; CI/CD</li>
+          <li>Security auditing</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <p class="edu-title">Bachelor of Information Management (BIM)</p>
+        <p class="muted">Tribhuvan University</p>
+        <p class="muted">Expected 2026</p>
+      </section>
+
+      <section>
+        <h2>Strengths</h2>
+        <ul>
+          <li>Ships end to end, alone</li>
+          <li>Clean, maintainable code</li>
+          <li>Learns fast, owns problems</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <footer class="foot mono">
+    <span>Nepal · Open to full-stack internships</span>
+    <span>Portfolio · abhishekdhimal.com.np</span>
+  </footer>
+</div>
+</body>
+</html>

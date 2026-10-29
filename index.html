@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Abhishek Dhimal — Full-Stack Developer, Nepal</title>
-<meta name="description" content="Abhishek Dhimal is a full-stack developer and BIM student in Nepal who designs and ships business software — including OrderKhaja, a live QR table-ordering SaaS for cafés.">
+<meta name="description" content="Abhishek Dhimal is a full-stack developer in Nepal and the founder and sole engineer of OrderKhaja, a live QR ordering and billing SaaS for cafés and restaurants.">
 <meta name="author" content="Abhishek Dhimal">
 <link rel="canonical" href="https://abhishekdhimal.com.np/">
 
@@ -140,11 +140,11 @@
       <div class="hero-grid">
         <div class="hero-copy">
           <p class="lede">
-            I’m Abhishek — a full-stack developer and Bachelor of Information Management student in Nepal. I design and build business applications end to end, from database policies to the last pixel of the interface. My latest, <a class="inline-link" href="https://www.orderkhaja.com/" target="_blank" rel="noopener">OrderKhaja</a>, is a subscription SaaS that is live today.
+            I’m Abhishek — a full-stack developer in Nepal, and the founder and sole engineer of <a class="inline-link" href="https://www.orderkhaja.com/" target="_blank" rel="noopener">OrderKhaja</a>: a live SaaS that lets cafés take orders, bills and payments from a QR on every table. I design, build and run it end to end, from Postgres security policies to the screen staff use mid-rush.
           </p>
           <div class="hero-actions">
-            <a class="button" href="#work">
-              See selected work
+            <a class="button" href="#orderkhaja">
+              See the OrderKhaja story
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
             </a>
             <a class="button button--ghost" href="assets/Abhishek_Dhimal_Resume.pdf" download="Abhishek-Dhimal-Resume.pdf">
@@ -160,7 +160,8 @@
             <span id="ticketDate">2026</span>
           </div>
           <dl class="ticket-rows">
-            <div><dt>Shipping</dt><dd>OrderKhaja <span class="tag tag--live">Live</span></dd></div>
+            <div><dt>Building</dt><dd>OrderKhaja <span class="tag tag--live">Live</span></dd></div>
+            <div><dt>Role</dt><dd>Founder &amp; sole engineer</dd></div>
             <div><dt>Studying</dt><dd>BIM, Tribhuvan University <span class="muted">’26</span></dd></div>
             <div><dt>Based in</dt><dd>Nepal <span class="muted" id="nepalTime">UTC+5:45</span></dd></div>
             <div><dt>Open to</dt><dd>Full-stack internships</dd></div>
@@ -172,11 +173,16 @@
         </div>
       </div>
 
-      <nav class="hero-index" aria-label="Selected projects" data-reveal>
-        <a href="#orderkhaja"><span class="mono">01</span><span class="idx-title">OrderKhaja</span><span class="idx-desc">QR table ordering SaaS</span></a>
-        <a href="#pulsemart"><span class="mono">02</span><span class="idx-title">PulseMart</span><span class="idx-desc">E-commerce with an AI admin</span></a>
-        <a href="#flavoro"><span class="mono">03</span><span class="idx-title">Flavoro</span><span class="idx-desc">Restaurant management</span></a>
-      </nav>
+      <a class="feature-strip" href="https://www.orderkhaja.com/" target="_blank" rel="noopener" data-reveal>
+        <img src="assets/img/orderkhaja-logo-160.webp" width="56" height="56" alt="" decoding="async">
+        <span class="fs-text">
+          <span class="mono fs-label"><span class="dot dot--live" aria-hidden="true"></span>Featured · Live now</span>
+          <span class="fs-title">OrderKhaja</span>
+          <span class="fs-desc">QR ordering &amp; billing SaaS for cafés in Nepal — designed, built and run by me</span>
+        </span>
+        <span class="fs-cta">Visit orderkhaja.com <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        <span class="visually-hidden">(opens in a new tab)</span>
+      </a>
     </div>
   </section>
 
@@ -184,145 +190,129 @@
   <section class="section" id="work" aria-labelledby="work-title">
     <div class="wrap">
       <header class="section-head" data-reveal>
-        <p class="mono eyebrow"><span>01</span> Selected work</p>
-        <h2 id="work-title">Three businesses that ran on paper, phone calls and guesswork&nbsp;— and the systems I built to replace that.</h2>
+        <p class="mono eyebrow"><span>01</span> Flagship work</p>
+        <h2 id="work-title">Cafés in Nepal ran on paper tickets and guesswork. So I built them a&nbsp;system&nbsp;— and I run it.</h2>
       </header>
 
-      <!-- Project 01 -->
-      <article class="project project--feature" id="orderkhaja" aria-labelledby="p1-title">
-        <figure class="project-media" data-reveal>
+      <article class="flagship" id="orderkhaja" aria-labelledby="ok-title">
+        <header class="flagship-head" data-reveal>
+          <div class="flagship-id">
+            <img class="flagship-logo" src="assets/img/orderkhaja-logo-160.webp" width="80" height="80" alt="OrderKhaja logo" decoding="async">
+            <div>
+              <p class="mono flagship-meta"><span class="dot dot--live" aria-hidden="true"></span>Live product · Founder &amp; sole engineer · Sep 2026 – present</p>
+              <h3 id="ok-title">OrderKhaja</h3>
+              <p class="project-kind">QR menu, ordering, billing and sales for cafés and restaurants in Nepal.</p>
+            </div>
+          </div>
+          <a class="button button--accent flagship-cta" href="https://www.orderkhaja.com/" target="_blank" rel="noopener">
+            Try OrderKhaja live
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+        </header>
+
+        <figure class="browser" data-reveal>
+          <div class="browser-bar" aria-hidden="true">
+            <span class="browser-dots"><i></i><i></i><i></i></span>
+            <span class="browser-url mono">orderkhaja.com/dashboard</span>
+          </div>
           <picture>
-            <source type="image/webp" srcset="assets/img/orderkhaja-640.webp 640w, assets/img/orderkhaja-800.webp 800w, assets/img/orderkhaja-1024.webp 1024w, assets/img/orderkhaja-1536.webp 1536w" sizes="(min-width: 1320px) 1210px, (min-width: 900px) 92vw, calc(100vw - 40px)">
-            <img src="assets/orderkhaja.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="OrderKhaja product visual: the owner dashboard on a laptop showing today’s sales, orders and active tables, beside a phone with the guest menu and a ‘Scan to Order’ table stand.">
+            <source type="image/webp" srcset="assets/img/orderkhaja-dashboard-640.webp 640w, assets/img/orderkhaja-dashboard-960.webp 960w, assets/img/orderkhaja-dashboard-1400.webp 1400w, assets/img/orderkhaja-dashboard-2000.webp 2000w" sizes="(min-width: 1320px) 1210px, (min-width: 900px) 92vw, calc(100vw - 40px)">
+            <img src="assets/img/orderkhaja-dashboard.jpg" width="1400" height="875" loading="lazy" decoding="async" alt="OrderKhaja owner dashboard, Floor view: a banner says two new orders are waiting, and a grid of tables on the ground floor and rooftop shows each table’s status — free, new order, cooking, ready or eating — with its running bill in rupees.">
           </picture>
-          <figcaption class="mono">Fig. 01 — Product visual: owner dashboard, guest menu, table QR</figcaption>
+          <figcaption class="mono">Fig. 01 — The real owner dashboard. Every table’s status and bill at a glance; new orders ring until someone starts preparing them. (Demo data.)</figcaption>
         </figure>
 
-        <div class="project-body">
-          <header class="project-head" data-reveal>
-            <p class="mono project-num">01</p>
-            <div>
-              <h3 id="p1-title" class="project-brand"><img class="project-logo" src="assets/img/orderkhaja-logo.png" width="512" height="512" alt="" loading="lazy" decoding="async">OrderKhaja</h3>
-              <p class="project-kind">QR menu &amp; table ordering for cafés and restaurants</p>
-            </div>
-            <p class="mono status"><span class="dot dot--live" aria-hidden="true"></span>Live · Subscription</p>
-          </header>
+        <dl class="stats" data-reveal>
+          <div><dt class="mono">Commits, built solo</dt><dd>298</dd></div>
+          <div><dt class="mono">Versioned SQL migrations</dt><dd>116</dd></div>
+          <div><dt class="mono">Automated tests, all passing</dt><dd>94</dd></div>
+          <div><dt class="mono">Lines of TypeScript</dt><dd>42k+</dd></div>
+        </dl>
+        <p class="mono stats-note">From the OrderKhaja repository, October 2026.</p>
 
-          <div class="project-cols">
-            <div class="project-col" data-reveal>
-              <h4 class="mono col-label">The problem</h4>
-              <p>Cafés taking orders by phone and paper ticket lose track of tables, mishear orders and guess their numbers at the end of the day.</p>
-              <p>OrderKhaja lets any café sign up and go live in minutes: guests scan the QR on their table and order from their phone — no app to install — while the owner runs everything from one dashboard.</p>
-            </div>
-            <div class="project-col" data-reveal>
-              <h4 class="mono col-label">What I built</h4>
-              <ul class="ledger-list">
-                <li>Multi-tenant architecture with PostgreSQL row-level security, so every restaurant’s data stays isolated</li>
-                <li>QR table ordering, live order tracking, and menu &amp; table management</li>
-                <li>Subscription billing with trial expiry and eSewa, Nepal’s local payment gateway</li>
-                <li>Daily revenue summaries for owners</li>
+        <div class="project-cols">
+          <div class="project-col" data-reveal>
+            <h4 class="mono col-label">The problem</h4>
+            <p>In most cafés, guests wait for a waiter, orders get misheard between table and kitchen, and owners work out the day’s sales in a notebook.</p>
+            <p>OrderKhaja replaces that with one system. Guests scan the QR on their table and order from their phone — no app, in English or Nepali. Staff see every table live. Owners see the money.</p>
+          </div>
+          <div class="project-col" data-reveal>
+            <h4 class="mono col-label">What I built</h4>
+            <ul class="ledger-list">
+              <li>Multi-tenant SaaS: any café signs up and goes live the same day, with a free trial and plans priced by monthly orders</li>
+              <li>Live floor and order views with ringing alerts and web-push, a kitchen screen and thermal KOT printing</li>
+              <li>Bills with 13% VAT and service charge; payment by Khalti, eSewa, Fonepay/bank QR with the amount pre-filled, cash or prepaid card</li>
+              <li>Role-based staff logins, discount codes, loyalty, stock, sales reports and day close</li>
+            </ul>
+          </div>
+          <div class="project-col" data-reveal>
+            <h4 class="mono col-label">How it’s engineered</h4>
+            <ul class="ledger-list">
+              <li>Tenant isolation enforced in PostgreSQL with row-level security policies</li>
+              <li>Self-run security audit, fixed in a hardening migration: server-side order-total checks, column-level grants, rate limits, security headers</li>
+              <li>CI runs lint, type-check, tests and a production build on every push</li>
+              <li>Daily database backups, a monthly restore test and uptime checks every 15 minutes</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flagship-foot">
+          <dl class="project-meta" data-reveal>
+            <div><dt class="mono">Role</dt><dd>Founder — product, design, engineering, operations</dd></div>
+            <div><dt class="mono">Stack</dt><dd>Next.js, React, TypeScript, Supabase (PostgreSQL, Auth, Storage), Tailwind CSS, Vercel</dd></div>
+            <div><dt class="mono">Pricing</dt><dd>
+              <ul class="price-list">
+                <li><span>Starter <small>under 300 orders</small></span><span>Rs 499<small>/mo</small></span></li>
+                <li><span>Growing <small>300–1,000 orders</small></span><span>Rs 999<small>/mo</small></span></li>
+                <li><span>Busy <small>1,000+ orders</small></span><span>Rs 1,499<small>/mo</small></span></li>
               </ul>
-            </div>
-            <div class="project-col project-meta" data-reveal>
-              <dl>
-                <div><dt class="mono">Role</dt><dd>Product design &amp; full-stack development</dd></div>
-                <div><dt class="mono">Stack</dt><dd>Next.js, Supabase, PostgreSQL, Tailwind CSS</dd></div>
-                <div><dt class="mono">Model</dt><dd>Hosted subscription, priced by monthly orders · free trial</dd></div>
-                <div><dt class="mono">Pricing</dt><dd>
-                  <ul class="price-list">
-                    <li><span>Starter <small>under 300 orders</small></span><span>Rs 499<small>/mo</small></span></li>
-                    <li><span>Growing <small>300–1,000 orders</small></span><span>Rs 999<small>/mo</small></span></li>
-                    <li><span>Busy <small>1,000+ orders</small></span><span>Rs 1,499<small>/mo</small></span></li>
-                  </ul>
-                  <p class="price-note">Launch offer: 50% off · yearly plans get 2 months free</p>
-                </dd></div>
-              </dl>
-              <a class="button project-cta" href="https://www.orderkhaja.com/" target="_blank" rel="noopener">
-                Visit orderkhaja.com
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
-                <span class="visually-hidden">(opens in a new tab)</span>
-              </a>
-            </div>
-          </div>
+              <p class="price-note">Launch offer: 50% off · yearly plans get 2 months free</p>
+            </dd></div>
+          </dl>
+
+          <a class="qr-card" href="https://www.orderkhaja.com/" target="_blank" rel="noopener" data-reveal>
+            <img src="assets/img/orderkhaja-qr.png" width="240" height="240" loading="lazy" decoding="async" alt="QR code linking to orderkhaja.com">
+            <span class="qr-text">
+              <span class="mono qr-label">Scan with your phone</span>
+              <span class="qr-title">See OrderKhaja the way a guest does.</span>
+              <span class="qr-link">orderkhaja.com <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </span>
+            <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
         </div>
       </article>
 
-      <!-- Project 02 -->
-      <article class="project project--split" id="pulsemart" aria-labelledby="p2-title">
-        <figure class="project-media" data-reveal>
-          <picture>
-            <source type="image/webp" srcset="assets/img/pulsemart-640.webp 640w, assets/img/pulsemart-800.webp 800w, assets/img/pulsemart-1024.webp 1024w, assets/img/pulsemart-1536.webp 1536w" sizes="(min-width: 1320px) 700px, (min-width: 900px) 54vw, calc(100vw - 40px)">
-            <img src="assets/pulsemart.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="PulseMart product visual: a customer storefront with featured products beside a dark admin dashboard with sales, inventory status and an AI assistant panel listing low-stock items.">
-          </picture>
-          <figcaption class="mono">Fig. 02 — Product visual: storefront, admin dashboard, AI assistant</figcaption>
-        </figure>
-
-        <div class="project-body">
-          <header class="project-head" data-reveal>
-            <p class="mono project-num">02</p>
-            <div>
-              <h3 id="p2-title">PulseMart</h3>
-              <p class="project-kind">Self-hosted e-commerce with an AI-powered admin</p>
+      <!-- Earlier projects -->
+      <div class="earlier">
+        <h3 class="mono subhead" data-reveal>Earlier projects — where I learned the fundamentals</h3>
+        <div class="earlier-grid">
+          <article class="mini-project" id="pulsemart" data-reveal>
+            <picture class="mini-media">
+              <source type="image/webp" srcset="assets/img/pulsemart-640.webp 640w, assets/img/pulsemart-800.webp 800w" sizes="(min-width: 900px) 280px, calc(100vw - 40px)">
+              <img src="assets/pulsemart.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="PulseMart concept visual: a storefront next to an admin dashboard with an AI assistant panel.">
+            </picture>
+            <div class="mini-body">
+              <p class="mono mini-num">02</p>
+              <h4>PulseMart</h4>
+              <p>E-commerce learning project: catalog, cart and checkout, email-OTP sign-up with JWT sessions, and an AI admin assistant that asks before it changes anything.</p>
+              <p class="mono mini-stack">Next.js · Node.js · Express · PostgreSQL</p>
             </div>
-            <p class="mono status"><span class="dot" aria-hidden="true"></span>Available · One-time licence</p>
-          </header>
-
-          <div class="project-text" data-reveal>
-            <p>Small online stores usually choose between paying heavily for a hosted platform or hand-rolling something fragile. PulseMart is a complete, self-hosted alternative — with an admin assistant that answers plain-English questions about orders and inventory, but never changes anything without sign-off.</p>
-            <h4 class="mono col-label">What I built</h4>
-            <ul class="ledger-list">
-              <li>Catalog, cart and checkout with online and cash-on-delivery payment, plus order tracking</li>
-              <li>Email-OTP verified accounts, JWT sessions and self-service password reset</li>
-              <li>AI admin assistant with a confirm-before-write flow and a full audit log</li>
-            </ul>
-            <dl class="project-meta">
-              <div><dt class="mono">Stack</dt><dd>Next.js, React, Node.js, Express, PostgreSQL, Tailwind CSS</dd></div>
-              <div><dt class="mono">Model</dt><dd>From $249, one-time — source code plus personal setup help</dd></div>
-            </dl>
-            <a class="button button--ghost project-cta" href="https://wa.me/9779827064592?text=Hi%20Abhishek%2C%20I%27m%20interested%20in%20PulseMart." target="_blank" rel="noopener">
-              Ask about PulseMart on WhatsApp
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
-              <span class="visually-hidden">(opens in a new tab)</span>
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Project 03 -->
-      <article class="project project--split project--flip" id="flavoro" aria-labelledby="p3-title">
-        <figure class="project-media" data-reveal>
-          <picture>
-            <source type="image/webp" srcset="assets/img/flavoro-640.webp 640w, assets/img/flavoro-800.webp 800w, assets/img/flavoro-1024.webp 1024w, assets/img/flavoro-1536.webp 1536w" sizes="(min-width: 1320px) 700px, (min-width: 900px) 54vw, calc(100vw - 40px)">
-            <img src="assets/flavoro.jpg" width="1897" height="911" loading="lazy" decoding="async" alt="Flavoro customer homepage screenshot: a dark navigation bar with delivery status, login and register buttons above a food photograph headlined ‘Taste the Tradition, Slice by Slice.’">
-          </picture>
-          <figcaption class="mono">Fig. 03 — Interface screenshot: customer homepage</figcaption>
-        </figure>
-
-        <div class="project-body">
-          <header class="project-head" data-reveal>
-            <p class="mono project-num">03</p>
-            <div>
-              <h3 id="p3-title">Flavoro</h3>
-              <p class="project-kind">Online food ordering &amp; restaurant management</p>
+          </article>
+          <article class="mini-project" id="flavoro" data-reveal>
+            <picture class="mini-media">
+              <source type="image/webp" srcset="assets/img/flavoro-640.webp 640w, assets/img/flavoro-800.webp 800w" sizes="(min-width: 900px) 280px, calc(100vw - 40px)">
+              <img src="assets/flavoro.jpg" width="1897" height="911" loading="lazy" decoding="async" alt="Flavoro customer homepage with a food photograph and the headline ‘Taste the Tradition, Slice by Slice.’">
+            </picture>
+            <div class="mini-body">
+              <p class="mono mini-num">03</p>
+              <h4>Flavoro</h4>
+              <p>My first full-stack build: online food ordering with inventory, simple financial tracking and role-based access for restaurant staff.</p>
+              <p class="mono mini-stack">PHP · MySQL · Tailwind CSS</p>
             </div>
-            <p class="mono status"><span class="dot dot--muted" aria-hidden="true"></span>Private codebase</p>
-          </header>
-
-          <div class="project-text" data-reveal>
-            <p>Restaurants juggling phone orders and paper tickets lose track of stock and money fast. Flavoro brings it into one system: customers order online, staff work within role-based permissions, and owners see their finances in real time — in an interface built for the phone in their hand.</p>
-            <h4 class="mono col-label">What I built</h4>
-            <ul class="ledger-list">
-              <li>Core backend modules for inventory management and real-time financial tracking</li>
-              <li>Role-based access control for owners and staff</li>
-              <li>A modern, mobile-responsive interface for customers and staff</li>
-            </ul>
-            <dl class="project-meta">
-              <div><dt class="mono">Stack</dt><dd>PHP, MySQL, HTML, CSS, Tailwind CSS, Bootstrap</dd></div>
-              <div><dt class="mono">Access</dt><dd>Not open source — walkthrough available on request</dd></div>
-            </dl>
-          </div>
+          </article>
         </div>
-      </article>
+      </div>
     </div>
   </section>
 
@@ -336,7 +326,7 @@
 
       <div class="about-grid">
         <div class="about-copy" data-reveal>
-          <p>I’m drawn to the unglamorous problems that decide whether a small business has a good day: the order that got misheard, the stock count nobody updated, the bill that doesn’t add up. I enjoy owning the whole path — the data model, the security rules, the payment flow and the interface people actually touch.</p>
+          <p>I’m drawn to the unglamorous problems that decide whether a small business has a good day: the order that got misheard, the bill that doesn’t add up, the backup nobody tested. With OrderKhaja I own the whole path — the data model, the security rules, the payment flow and the interface people actually touch.</p>
           <p>Right now I’m finishing my BIM at Tribhuvan University and looking for an internship on a team that ships real products, where I can learn fast from experienced engineers and contribute from the first week.</p>
         </div>
 
@@ -353,26 +343,26 @@
         <li data-reveal>
           <span class="mono principle-num">i.</span>
           <h4>Isolation by default</h4>
-          <p>Every restaurant on OrderKhaja shares one database, so separation is enforced at the database itself with row-level security policies — not left to application code to remember.</p>
-          <p class="mono principle-ref">In OrderKhaja</p>
+          <p>Every café shares one database, so separation is enforced by PostgreSQL row-level security — not left to application code to remember.</p>
+          <p class="mono principle-ref">OrderKhaja · RLS policies</p>
         </li>
         <li data-reveal>
           <span class="mono principle-num">ii.</span>
-          <h4>AI proposes, people approve</h4>
-          <p>PulseMart’s assistant can read the store and suggest changes, but nothing is written until an admin confirms — and every action lands in an audit log.</p>
-          <p class="mono principle-ref">In PulseMart</p>
+          <h4>Never trust the client’s total</h4>
+          <p>Prices and order totals are re-checked in the database, so a tampered phone can’t change a bill. I found that gap in my own audit and closed it.</p>
+          <p class="mono principle-ref">OrderKhaja · security hardening</p>
         </li>
         <li data-reveal>
           <span class="mono principle-num">iii.</span>
-          <h4>Built for the people at the counter</h4>
-          <p>Staff get exactly the permissions their role needs, owners see the money in real time, and every screen works on the phone already in their pocket.</p>
-          <p class="mono principle-ref">In Flavoro</p>
+          <h4>Boring, proven reliability</h4>
+          <p>CI on every push, daily backups and a restore test every month. A backup you’ve never restored is only a hope.</p>
+          <p class="mono principle-ref">OrderKhaja · GitHub Actions</p>
         </li>
         <li data-reveal>
           <span class="mono principle-num">iv.</span>
           <h4>Made for where it’s used</h4>
-          <p>Payments through eSewa, prices in rupees, and guests who order without installing anything — local details decide whether software gets adopted.</p>
-          <p class="mono principle-ref">In OrderKhaja</p>
+          <p>Khalti, eSewa and bank QR, bills with VAT, a menu in Nepali, and no app for guests — local details decide whether software gets adopted.</p>
+          <p class="mono principle-ref">OrderKhaja · payments &amp; i18n</p>
         </li>
       </ol>
     </div>
@@ -397,29 +387,29 @@
         </thead>
         <tbody>
           <tr class="toolkit-row" data-reveal>
-            <th scope="row" class="toolkit-area">Frameworks &amp; runtime</th>
-            <td class="toolkit-tools">Next.js, React, Node.js, Express</td>
-            <td class="toolkit-used mono">OrderKhaja · PulseMart</td>
-          </tr>
-          <tr class="toolkit-row" data-reveal>
-            <th scope="row" class="toolkit-area">Data &amp; platforms</th>
-            <td class="toolkit-tools">PostgreSQL, Supabase, MySQL</td>
-            <td class="toolkit-used mono">OrderKhaja · PulseMart · Flavoro</td>
-          </tr>
-          <tr class="toolkit-row" data-reveal>
-            <th scope="row" class="toolkit-area">Interface</th>
-            <td class="toolkit-tools">HTML, CSS, Tailwind CSS, Bootstrap</td>
-            <td class="toolkit-used mono">OrderKhaja · PulseMart · Flavoro</td>
-          </tr>
-          <tr class="toolkit-row" data-reveal>
-            <th scope="row" class="toolkit-area">Systems I’ve shipped</th>
-            <td class="toolkit-tools">Multi-tenancy &amp; row-level security, subscription billing, eSewa &amp; cash-on-delivery payments, email-OTP &amp; JWT auth, role-based access, AI-assisted admin tooling</td>
-            <td class="toolkit-used mono">Across all three</td>
-          </tr>
-          <tr class="toolkit-row" data-reveal>
             <th scope="row" class="toolkit-area">Languages</th>
-            <td class="toolkit-tools">JavaScript, PHP, Python, Java, C</td>
-            <td class="toolkit-used mono">JavaScript &amp; PHP in shipped work</td>
+            <td class="toolkit-tools">TypeScript, JavaScript, SQL, PHP, Python, Java, C</td>
+            <td class="toolkit-used mono">TypeScript &amp; SQL daily in OrderKhaja</td>
+          </tr>
+          <tr class="toolkit-row" data-reveal>
+            <th scope="row" class="toolkit-area">Frontend</th>
+            <td class="toolkit-tools">Next.js (App Router), React, Tailwind CSS, installable PWA</td>
+            <td class="toolkit-used mono">OrderKhaja</td>
+          </tr>
+          <tr class="toolkit-row" data-reveal>
+            <th scope="row" class="toolkit-area">Backend &amp; data</th>
+            <td class="toolkit-tools">PostgreSQL, Supabase (Auth, Storage, row-level security), Node.js, Express, MySQL</td>
+            <td class="toolkit-used mono">OrderKhaja · earlier projects</td>
+          </tr>
+          <tr class="toolkit-row" data-reveal>
+            <th scope="row" class="toolkit-area">Payments &amp; integrations</th>
+            <td class="toolkit-tools">Khalti, eSewa, Fonepay/bank QR (EMV), Web Push, thermal KOT printing</td>
+            <td class="toolkit-used mono">OrderKhaja</td>
+          </tr>
+          <tr class="toolkit-row" data-reveal>
+            <th scope="row" class="toolkit-area">Delivery &amp; operations</th>
+            <td class="toolkit-tools">Vercel, GitHub Actions CI, automated backups &amp; restore tests, uptime monitoring</td>
+            <td class="toolkit-used mono">OrderKhaja</td>
           </tr>
         </tbody>
       </table>
